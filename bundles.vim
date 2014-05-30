@@ -51,8 +51,6 @@
 " }
 
 
-
-
 " Web {
 
     " Highlight css colors
@@ -124,6 +122,7 @@ NeoBundle 'Valloric/YouCompleteMe', {
       \     'mac' : './install.sh',
       \    },
       \ }
+
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/syntastic'
@@ -135,8 +134,6 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'mhinz/vim-startify'
-NeoBundle 'fholgado/minibufexpl.vim'
-" NeoBundle 'bling/vim-bufferline'
 NeoBundle 'Shougo/unite-session'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'xolox/vim-misc'
