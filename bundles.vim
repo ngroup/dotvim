@@ -21,7 +21,7 @@
                 \   "unix"      : "make -f make_unix.mak",
                 \ }}
 
-    NeoBundle "Shougo/unite.vim"
+    " NeoBundle "Shougo/unite.vim"
     NeoBundle 'L9'
 " } end of Basic
 
@@ -40,61 +40,13 @@
 " File Management and Search {
     " recent file
     NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources':'file_mru'}}
-    " NeoBundle 'kien/ctrlp.vim'
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Unite
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_split_rule = "botright"
-" let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-let g:unite_data_directory='~/.vim/.cache/unite'
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable=1
-let g:unite_source_rec_max_cache_files=5000
-let g:unite_prompt='» '
-
-call unite#custom_source('file_rec,file_rec/async,neomru/file,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.pyc',
-      \ '\.o',
-      \ '\.git/',
-      \ '\.hg/',
-      \ '*.tar.gz',
-      \ '*.zip',
-      \ '.*\.egg',
-      \ '*.egg-info',
-      \ '.*egg-info.*',
-      \ '\.sass-cache/',
-      \ ], '\|'))
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#set_profile('files', 'smartcase', 1)
-
-nnoremap <C-P> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
-
-autocmd FileType unite call s:unite_settings()
-
-function! s:unite_settings()
-  let b:SuperTabDisabled=1
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  imap <silent><buffer><expr> <C-x> unite#do_action('split')
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-  imap <buffer> <ESC> <Plug>(unite_exit)
-endfunction
 
     " NERDTree
     NeoBundleLazy 'scrooloose/nerdtree', {
                 \ 'autoload' : {
                 \      "commands": ["NERDTreeToggle"],
                 \ }}
-
 
 " }
 
@@ -192,6 +144,7 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
 NeoBundle 'sjbach/lusty'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'kien/ctrlp.vim'
 
 
 NeoBundleLazy 'majutsushi/tagbar', {
