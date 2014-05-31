@@ -9,6 +9,8 @@ let g:syntastic_python_checkers=['flake8']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<c-p>'
 " search anything (in files, buffers and MRU files at the same time.)
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_max_height = 10				" maxiumum height of match window
 let g:ctrlp_switch_buffer = 'et'		" jump to a file if it's open already
@@ -22,6 +24,12 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
             \ 'file': '\v\.(exe|so|dll|pyc)$'}
+
+let g:ctrlp_extensions = ['funky']
+let g:ctrlp_funky_syntax_highlight = 1
+nnoremap <C-f> :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <C-g> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -63,6 +71,12 @@ xmap s  <Plug>(easymotion-s2)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
 let g:airline_theme="molokai"
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -107,3 +121,15 @@ let g:multi_cursor_quit_key = '<Esc>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:session_directory = "~/.vim/session"
 let g:startify_list_order = ['sessions', 'files']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-bufferline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:bufferline_echo = 0
+let g:bufferline_active_highlight = 'Normal'
+
+
+noremap <silent> bb :LustyJuggler<cr>
+let g:LustyJugglerDefaultMappings = 0
+let g:LustyJugglerShowKeys = 'a'

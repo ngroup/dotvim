@@ -132,9 +132,9 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
+" NeoBundle 'bling/vim-bufferline'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'mhinz/vim-startify'
-NeoBundle 'Shougo/unite-session'
 NeoBundle 'danro/rename.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'junegunn/vim-easy-align'
@@ -142,7 +142,8 @@ NeoBundle 'rstacruz/sparkup', {'rtp': 'vim'}
 NeoBundle 'sjbach/lusty'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'kien/ctrlp.vim'
-
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
 
 NeoBundleLazy 'majutsushi/tagbar', {
             \   'autoload' : {
@@ -154,21 +155,5 @@ NeoBundleLazy 'sjl/gundo.vim', {
             \      "commands": ["GundoToggle"],
             \ }}
 
-NeoBundleLazy 'Shougo/vimshell.vim', {
-            \   'autoload' : {
-            \      "commands": ["VimShell"],
-            \ }}
-
-
 filetype plugin indent on     " Required!
 NeoBundleCheck
-
-
-let $BUNDLEPATH=$HOME . '/.vim/bundles.vim'
-augroup BundleReload
-    autocmd!
-    autocmd BundleReload BufWritePost $BUNDLEPATH nested source $BUNDLEPATH
-augroup END
-
-
-

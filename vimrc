@@ -445,6 +445,8 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 " }
 
+
+" Beautiful printing
 command! -nargs=* Hardcopy call DoMyPrint('<args>')
 function! DoMyPrint(args)
   let colorsave=g:colors_name
@@ -459,6 +461,7 @@ endfunction
 " setting for fish shell
 set shell=/bin/sh
 
+" fix python virtualenv
 if has("python") && !empty($VIRTUAL_ENV)
 python << EOF
 import os
@@ -477,14 +480,3 @@ endif
 map <C-Tab> :bn<cr>
 map <C-S-Tab> :bp<cr>
 map bd :bd<cr>
-
-
-let g:did_minibufexplorer_syntax_inits = 1
-
-" MiniBufExpl Colors
-hi MBENormal               guifg=#808080 guibg=fg
-hi MBEChanged              guifg=#CD5907 guibg=fg
-hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
-hi MBEVisibleChanged       guifg=#F1266F guibg=fg
-hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
-hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
