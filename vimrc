@@ -42,6 +42,7 @@
     set fileformat=unix     " file mode is unix
     set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
     set noswapfile "disable the swap file
+    set hidden " switch buffer without saving
 
     " system clipboard integration
     if g:dtv_set.is_mac
@@ -120,7 +121,6 @@
     " enforces a specified line-length and auto inserts hard line breaks when we
     " reach the limit; in Normal mode, you can reformat the current paragraph with
     " gqap.
-    set textwidth=80
     set shell=bash\ -i
 
 " } General End
@@ -140,7 +140,7 @@
 
 " Vim UI {
 set background=dark
-colorscheme flatlandia            " load a colorscheme
+colorscheme molokai            " load a colorscheme
 set showcmd                     " Show me what I'm typing
 set showmode                    " display the current mode
 set cursorline                  " highlight current line
@@ -287,6 +287,7 @@ autocmd FileType php                        setlocal tabstop=2 shiftwidth=2 soft
 autocmd FileType ruby                       setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType php                        setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType coffee,javascript          setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufNewFile,BufReadPost *.coffee     set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python                     setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType html,htmldjango,xhtml,haml,jinja2 setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType sass,scss,css              setlocal tabstop=4 shiftwidth=4 softtabstop=4

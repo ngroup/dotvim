@@ -1,11 +1,13 @@
-" neobundle configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => neobundle configuration and basic plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     if g:dtv_set.is_windows
         set rtp+=$HOME/vimfiles/bundle/neobundle.vim/
-        call neobundle#rc('$HOME/vimfiles/bundle/')
+        call neobundle#begin('$HOME/vimfiles/bundle/')
     else
         " usual quickstart instructions
         set rtp+=~/.vim/bundle/neobundle.vim/
-        call neobundle#rc(expand('~/.vim/bundle/'))
+        call neobundle#begin(expand('~/.vim/bundle/'))
     endif
 
 
@@ -21,7 +23,7 @@
                 \   "unix"      : "make -f make_unix.mak",
                 \ }}
 
-    " NeoBundle "Shougo/unite.vim"
+    NeoBundle "Shougo/unite.vim"
     NeoBundle 'L9'
 " } end of Basic
 
@@ -106,23 +108,14 @@
 
 
 
-
-if g:dtv_set.is_windows
-    let g:dtv_set.autocomplete_method = 'neocomplcache'
-    if has('lua')
-        let g:dtv_set.autocomplete_method = 'neocomplete'
-    endif
-else
-    let g:dtv_set.autocomplete_method = 'ycm'
-endif
-
-
 NeoBundle 'Valloric/YouCompleteMe', {
       \ 'build' : {
-      \     'mac' : './install.sh',
+      \     'mac' : './install.sh --clang-completer',
       \    },
       \ }
 
+" NeoBundle 'mileszs/ack.vim'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/syntastic'
@@ -132,7 +125,6 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
-" NeoBundle 'bling/vim-bufferline'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'danro/rename.vim'
@@ -144,6 +136,14 @@ NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'maksimr/vim-jsbeautify'
+NeoBundle 'einars/js-beautify'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'dag/vim-fish'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle '29decibel/codeschool-vim-theme'
+NeoBundle 'tomasr/molokai'
 
 NeoBundleLazy 'majutsushi/tagbar', {
             \   'autoload' : {
@@ -155,5 +155,7 @@ NeoBundleLazy 'sjl/gundo.vim', {
             \      "commands": ["GundoToggle"],
             \ }}
 
+
+call neobundle#end()
 filetype plugin indent on     " Required!
 NeoBundleCheck

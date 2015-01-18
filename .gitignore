@@ -5,3 +5,5 @@ undodir
 *~
 .cache
 session
+*.swp
+.netrwhist

@@ -133,3 +133,21 @@ let g:bufferline_active_highlight = 'Normal'
 noremap <silent> bb :LustyJuggler<cr>
 let g:LustyJugglerDefaultMappings = 0
 let g:LustyJugglerShowKeys = 'a'
+
+
+nnoremap \ :Ag<SPACE>
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+
+" Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
