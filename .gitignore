@@ -7,3 +7,5 @@ undodir
 session
 *.swp
 .netrwhist
+autoload
+plugged

@@ -1,3 +1,232 @@
+" ======================
+" My vim configurations
+" ======================
+
+" =========
+" vim-plug
+" =========
+let g:plug_url_format = 'https://github.com/%s'
+call plug#begin('~/.vim/plugged')
+
+" Theme
+" night theme
+Plug 'jordwalke/flatlandia'
+Plug 'tomasr/molokai'
+" day theme (good for printing)
+Plug 'summerfruit.vim'
+
+
+" Highlight css colors
+Plug 'ap/vim-css-color', { 'for': ["html", "css", "less", "sass", "scss", "javascript", "coffee", "coffeescript", "djantohtml", "jinja2"]}
+Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
+" syntax for HTML5
+Plug 'othree/html5.vim', { 'for': ['html', 'djangohtml', 'jinja2'] }
+Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['html', 'djangohtml', 'jinja2'] }
+" syntax /indent /omnicomplete for LESS
+Plug 'groenewege/vim-less', {'for': ['less'] }
+" syntax for SASS
+Plug 'cakebaker/scss-syntax.vim', {'for': ['sass', "scss"] }
+" syntax for Javascript
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html', 'jinja2']} "{{{
+    let g:html_indent_inctags = "html,body,head,tbody"
+    let g:html_indent_script1 = "inc"
+    let g:html_indent_style1 = "inc"
+    "}}}
+Plug 'maksimr/vim-jsbeautify'
+Plug 'einars/js-beautify'
+Plug 'kchmck/vim-coffee-script'
+" for zencoding
+Plug 'mattn/emmet-vim', {'for': ['html','xml','xsl','xslt','xsd','css','sass','scss','less','mustache','jinja2']}
+Plug 'gregsexton/MatchTag', {'for':['html','xml','jinja2']}
+
+Plug 'hynek/vim-python-pep8-indent', {'for': ['python']}
+Plug 'jmcantrell/vim-virtualenv', {'for': ['python']}
+Plug 'hdima/python-syntax'
+Plug 'digitaltoad/vim-jade'
+
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'dag/vim-fish'
+Plug 'fatih/vim-go'
+
+
+
+" General
+Plug 'editorconfig/editorconfig-vim'
+Plug 'rking/ag.vim' "{{{
+    nnoremap \ :Ag<SPACE>
+    " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+    if executable('ag')
+    " Use Ag over Grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+        let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+            \ --ignore .git
+            \ --ignore .svn
+            \ --ignore .hg
+            \ --ignore .DS_Store
+            \ --ignore "**/*.pyc"
+            \ -g ""'
+    endif
+    "}}}
+
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/syntastic' "{{{
+    let g:syntastic_python_checkers=['flake8']
+"}}}
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+
+" motion
+" Plug 'Lokaltog/vim-easymotion'
+Plug 'justinmk/vim-sneak'  "{{{
+    augroup SneakPluginColors
+        autocmd!
+        autocmd ColorScheme * hi SneakPluginTarget guifg=black guibg=red ctermfg=black ctermbg=red
+        autocmd ColorScheme * hi SneakPluginScope  guifg=black guibg=yellow ctermfg=black ctermbg=yellow
+    augroup END
+    " }}}
+
+
+Plug 'terryma/vim-multiple-cursors' "{{{
+    let g:multi_cursor_next_key='<C-n>'
+    let g:multi_cursor_prev_key='<C-p>'
+    let g:multi_cursor_skip_key='<C-x>'
+    let g:multi_cursor_quit_key='<Esc>'
+    "}}}
+
+
+Plug 'godlygeek/tabular', {'on' : 'Tabularize'}  "{{{
+    nmap <Leader>a& :Tabularize /&<CR>
+    vmap <Leader>a& :Tabularize /&<CR>
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:<CR>
+    vmap <Leader>a: :Tabularize /:<CR>
+    nmap <Leader>a:: :Tabularize /:\zs<CR>
+    vmap <Leader>a:: :Tabularize /:\zs<CR>
+    nmap <Leader>a, :Tabularize /,<CR>
+    vmap <Leader>a, :Tabularize /,<CR>
+    nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+    vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+    "}}}
+
+" Layout
+Plug 'bling/vim-airline' "{{{
+    let g:airline_powerline_fonts = 1
+    let g:airline_theme="molokai"
+    " Enable the list of buffers
+    let g:airline#extensions#tabline#enabled = 1
+    " Show just the filename
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    "}}}
+
+
+Plug 'mhinz/vim-startify' "{{{
+    let g:session_directory = "~/.vim/session"
+    let g:startify_list_order = ['sessions', 'files']
+    "}}}
+Plug 'xolox/vim-misc'
+Plug 'rstacruz/sparkup', {'rtp': 'vim'}
+
+Plug 'kien/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'FelikZ/ctrlp-py-matcher' "{{{
+    let g:ctrlp_map = '<c-p>'
+    " search anything (in files, buffers and MRU files at the same time.)
+    let g:ctrlp_working_path_mode = 'ra'
+    let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
+    let g:ctrlp_cmd = 'CtrlPMixed'
+    let g:ctrlp_max_height = 10				" maxiumum height of match window
+    let g:ctrlp_switch_buffer = 'et'		" jump to a file if it's open already
+    let g:ctrlp_use_caching = 1				" enable caching
+    let g:ctrlp_clear_cache_on_exit=0  		" speed up by not removing clearing cache evertime
+    let g:ctrlp_mruf_max = 150 				" number of recently opened files
+
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+    let g:ctrlp_custom_ignore = {
+                \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+                \ 'file': '\v\.(exe|so|dll|pyc)$'}
+
+    " ctrlp-funky
+    let g:ctrlp_extensions = ['funky']
+    let g:ctrlp_funky_syntax_highlight = 1
+    " nnoremap <space> :CtrlPFunky<Cr>
+    " narrow the list down with a word under cursor
+    nnoremap <C-g> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+
+    nnoremap <C-f> :CtrlPFunky<cr>
+    nnoremap <C-b> :CtrlPBuffer<cr>
+
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    "}}}
+
+
+Plug 'Shougo/vimproc.vim', {'do': 'make -f make_mac.mak'}
+Plug 'Shougo/neomru.vim'
+
+
+Plug 'Shougo/vimshell.vim', {'on': ['VimShell', 'VimShellInteractive']} "{{{
+    if s:is_macvim
+        let g:vimshell_editor_command='mvim'
+    else
+        let g:vimshell_editor_command='vim'
+    endif
+    let g:vimshell_right_prompt='getcwd()'
+    let g:vimshell_data_directory=s:get_cache_dir('vimshell')
+    let g:vimshell_vimshrc_path='~/.vim/vimshrc'
+    "}}}
+
+
+Plug 'sjbach/lusty' "{{{
+    nnoremap <silent> <leader>b :LustyJuggler<cr>
+    let g:LustyJugglerDefaultMappings = 0
+    let g:LustyJugglerShowKeys = 'a'
+    "}}}
+
+
+Plug 'majutsushi/tagbar' "{{{
+    nnoremap <F8> :TagbarToggle<CR>
+    "}}}
+
+Plug 'Valloric/YouCompleteMe', { 'on': [], 'do': './install.sh --clang-completer' }
+Plug 'SirVer/ultisnips', { 'on': [] } "{{{
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+    "}}}
+Plug 'honza/vim-snippets', { 'on': [] } "{{{
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_seed_identifiers_with_syntax = 1
+    augroup load_us_ycm
+    autocmd!
+    autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
+                        \| call youcompleteme#Enable() | autocmd! load_us_ycm
+    augroup END
+    "}}}
+
+Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' } "{{{
+    nnoremap <F6> :GundoToggle<CR>
+    "}}}
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
+    let NERDTreeChDirMode=2
+    let NERDTreeIgnore = ['\.pyc$']
+    let NERDTreeShowHidden=0
+    let NERDTreeMinimalUI=0
+    map <F5> :NERDTreeToggle<CR>
+    "}}}
+
+call plug#end()
+
+
+
 " Environment {
     set nocompatible " not compatible with the old-fashion vi mode
 
@@ -8,20 +237,6 @@
     let g:dtv_set.is_cygwin = has('win32unix')
     let g:dtv_set.is_mac = has('mac') || has('macunix') || has('gui_macvim')
     let g:dtv_set.is_linux = !g:dtv_set.is_windows && !g:dtv_set.is_cygwin && !g:dtv_set.is_mac
-
-    " bundles config
-    filetype off
-    syntax off
-    let $BUNDLEPATH=$HOME . '/.vim/bundles.vim'
-    let $PluginConfPath=$HOME . '/.vim/plugin_conf.vim'
-    if filereadable(expand($BUNDLEPATH))
-        source $BUNDLEPATH
-    endif
-    " load utilites
-    if filereadable(expand($PluginConfPath))
-        source $PluginConfPath
-    endif
-
 " }
 
 " General {
@@ -108,12 +323,6 @@
     " }
 
     call InitDirectories()
-
-    " auto reload vimrc when editing it
-    augroup MyAutoCmd
-        autocmd!
-        autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-    augroup END
 
     " none of these should be word dividers, so make them not be
     set iskeyword+=_,$,@,%,#
@@ -302,6 +511,7 @@ au BufRead,BufNewFile *.jinja2 set filetype=html
 "The default leader is '\', but many people prefer ',' as it's in a standard
 "location
 let mapleader = ","
+let g:mapleader = ","
 
 
 " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
@@ -460,7 +670,8 @@ endfunction
 
 
 " setting for fish shell
-set shell=/bin/sh
+" set shell=/bin/sh
+set shell=/usr/local/bin/zsh
 
 " fix python virtualenv
 if has("python") && !empty($VIRTUAL_ENV)
@@ -481,3 +692,6 @@ endif
 map <C-Tab> :bn<cr>
 map <C-S-Tab> :bp<cr>
 map bd :bd<cr>
+
+
+nnoremap <leader>t :VimShell -split<CR>
