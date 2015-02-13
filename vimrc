@@ -180,6 +180,7 @@ Plug 'Shougo/vimshell.vim', {'on': ['VimShell', 'VimShellInteractive']} "{{{
     let g:vimshell_right_prompt='getcwd()'
     let g:vimshell_data_directory=s:get_cache_dir('vimshell')
     let g:vimshell_vimshrc_path='~/.vim/vimshrc'
+    nnoremap <leader>t :VimShell -split<CR>
     "}}}
 
 
@@ -498,7 +499,7 @@ autocmd FileType php                        setlocal tabstop=4 shiftwidth=4 soft
 autocmd FileType coffee,javascript          setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufReadPost *.coffee     set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python                     setlocal tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType html,htmldjango,xhtml,haml,jinja2 setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType html,htmldjango,xhtml,haml,jinja2,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType sass,scss,css              setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 au BufRead,BufNewFile *.jinja2 set filetype=html
@@ -688,10 +689,7 @@ EOF
 endif
 
 
-
+" buffer switch
 map <C-Tab> :bn<cr>
 map <C-S-Tab> :bp<cr>
 map bd :bd<cr>
-
-
-nnoremap <leader>t :VimShell -split<CR>
