@@ -2,6 +2,19 @@
 " My vim configurations
 " ======================
 
+" Environment {
+    set nocompatible " not compatible with the old-fashion vi mode
+
+    let g:dtv_set = {}  " all dotvim configures go here
+
+    " detect which os is the current vim running on
+    let g:dtv_set.is_windows = has('win16') || has('win32') || has('win64')
+    let g:dtv_set.is_cygwin = has('win32unix')
+    let g:dtv_set.is_mac = has('mac') || has('macunix') || has('gui_macvim')
+    let g:dtv_set.is_linux = !g:dtv_set.is_windows && !g:dtv_set.is_cygwin && !g:dtv_set.is_mac
+" }
+
+
 " =========
 " vim-plug
 " =========
@@ -17,7 +30,7 @@ Plug 'summerfruit.vim'
 
 
 " Highlight css colors
-Plug 'ap/vim-css-color', { 'for': ["html", "css", "less", "sass", "scss", "javascript", "coffee", "coffeescript", "djantohtml", "jinja2"]}
+Plug 'ap/vim-css-color', {'for': ['html', 'css', 'less', 'sass', 'scss', 'javascript', 'coffee', 'coffeescript', 'djantohtml', 'jinja2']}
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
 " syntax for HTML5
 Plug 'othree/html5.vim', { 'for': ['html', 'djangohtml', 'jinja2'] }
@@ -25,7 +38,7 @@ Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['html', 'djangohtml', 'jinja2'] }
 " syntax /indent /omnicomplete for LESS
 Plug 'groenewege/vim-less', {'for': ['less'] }
 " syntax for SASS
-Plug 'cakebaker/scss-syntax.vim', {'for': ['sass', "scss"] }
+Plug 'cakebaker/scss-syntax.vim', {'for': ['sass', 'scss'] }
 " syntax for Javascript
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html', 'jinja2']} "{{{
     let g:html_indent_inctags = "html,body,head,tbody"
@@ -172,13 +185,12 @@ Plug 'Shougo/neomru.vim'
 
 
 Plug 'Shougo/vimshell.vim', {'on': ['VimShell', 'VimShellInteractive']} "{{{
-    if s:is_macvim
+    if g:dtv_set.is_mac
         let g:vimshell_editor_command='mvim'
     else
         let g:vimshell_editor_command='vim'
     endif
     let g:vimshell_right_prompt='getcwd()'
-    let g:vimshell_data_directory=s:get_cache_dir('vimshell')
     let g:vimshell_vimshrc_path='~/.vim/vimshrc'
     nnoremap <leader>t :VimShell -split<CR>
     "}}}
@@ -228,17 +240,6 @@ call plug#end()
 
 
 
-" Environment {
-    set nocompatible " not compatible with the old-fashion vi mode
-
-    let g:dtv_set = {}  " all dotvim configures go here
-
-    " detect which os is the current vim running on
-    let g:dtv_set.is_windows = has('win16') || has('win32') || has('win64')
-    let g:dtv_set.is_cygwin = has('win32unix')
-    let g:dtv_set.is_mac = has('mac') || has('macunix') || has('gui_macvim')
-    let g:dtv_set.is_linux = !g:dtv_set.is_windows && !g:dtv_set.is_cygwin && !g:dtv_set.is_mac
-" }
 
 " General {
     filetype on
@@ -331,7 +332,8 @@ call plug#end()
     " enforces a specified line-length and auto inserts hard line breaks when we
     " reach the limit; in Normal mode, you can reformat the current paragraph with
     " gqap.
-    set shell=bash\ -i
+    " set shell=bash\ -i
+    set shell=bash
 
 " } General End
 
@@ -421,10 +423,10 @@ if has('gui_running')
     elseif g:dtv_set.is_windows
         set guifont=Consolas:h18
     elseif g:dtv_set.is_linux
-        set guifont=Inconsolata\ for\ Powerline\ 18,
-                    \Inconsolata\ 18,
-                    \Droid\ Sans\ Mono\ 18,
-                    \Ubuntu\ Mono\ 20
+        set guifont=Inconsolata\ for\ Powerline\ 16,
+                    \Inconsolata\ 16,
+                    \Droid\ Sans\ Mono\ 16,
+                    \Ubuntu\ Mono\ 18
     endif
 endif
 
@@ -670,9 +672,6 @@ endfunction
 
 
 
-" setting for fish shell
-" set shell=/bin/sh
-set shell=/usr/local/bin/zsh
 
 " fix python virtualenv
 if has("python") && !empty($VIRTUAL_ENV)
