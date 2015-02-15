@@ -399,15 +399,14 @@ endif
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    " set guioptions-=T  "no toolbar
+    set guioptions-=T  "no toolbar
     set guioptions+=e
     set guioptions-=m    "no menu
     set t_Co=256
     set guitablabel=%M\ %t
-    " set guioptions-=r  "no scrollbar
-    " set guioptions-=R
     set guioptions-=L
     set guioptions-=l
+    " no scrollbar
     set guioptions-=R
     set guioptions-=r
     set guioptions-=b
@@ -423,7 +422,7 @@ if has('gui_running')
     elseif g:dtv_set.is_windows
         set guifont=Consolas:h18
     elseif g:dtv_set.is_linux
-        set guifont=Inconsolata\ for\ Powerline\ 16,
+        set guifont=Inconsolata\ for\ Powerline\ 14,
                     \Inconsolata\ 16,
                     \Droid\ Sans\ Mono\ 16,
                     \Ubuntu\ Mono\ 18
