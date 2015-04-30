@@ -61,6 +61,7 @@ Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'dag/vim-fish'
 Plug 'fatih/vim-go'
 
+Plug 'lukaszkorecki/CoffeeTags'
 
 
 " General
@@ -333,7 +334,7 @@ call plug#end()
     " reach the limit; in Normal mode, you can reformat the current paragraph with
     " gqap.
     " set shell=bash\ -i
-    set shell=bash
+    set shell=/bin/bash
 
 " } General End
 
