@@ -26,7 +26,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'jordwalke/flatlandia'
 Plug 'tomasr/molokai'
 Plug 'chriskempson/base16-vim'
-let base16colorspace=256
+Plug 'michalbachowski/vim-wombat256mod'
+Plug 'w0ng/vim-hybrid'
+" let base16colorspace=256
+let g:hybrid_use_Xresources = 1
 
 " day theme (good for printing)
 Plug 'summerfruit.vim'
@@ -37,8 +40,8 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'ap/vim-css-color', {'for': ['html', 'css', 'less', 'sass', 'scss', 'javascript', 'coffee', 'coffeescript', 'djantohtml', 'jinja2']}
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
 " syntax for HTML5
-Plug 'othree/html5.vim', { 'for': ['html', 'djangohtml', 'jinja2'] }
-Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['html', 'djangohtml', 'jinja2'] }
+Plug 'othree/html5.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 " syntax /indent /omnicomplete for LESS
 Plug 'groenewege/vim-less', {'for': ['less'] }
 " syntax for SASS
@@ -57,14 +60,20 @@ Plug 'gregsexton/MatchTag', {'for':['html','xml','jinja2']}
 Plug 'hynek/vim-python-pep8-indent', {'for': ['python']}
 Plug 'jmcantrell/vim-virtualenv', {'for': ['python']}
 Plug 'hdima/python-syntax'
-Plug 'digitaltoad/vim-jade'
-Plug 'klen/python-mode'
 
+" Vim Jade template engine syntax highlighting and indention
+Plug 'digitaltoad/vim-jade'
 
 
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'dag/vim-fish'
 Plug 'fatih/vim-go'
+
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+" vim-pandoc-syntax not use conceal
+let g:pandoc#syntax#conceal#use = 0
+
 
 if !has('nvim')
     Plug 'lukaszkorecki/CoffeeTags'
@@ -100,14 +109,25 @@ Plug 'rking/ag.vim' "{{{
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic' "{{{
     let g:syntastic_python_checkers=['flake8']
+    let g:syntastic_python_flake8_args = "--max-line-length=120"
 "}}}
-Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
+
+" NERDCommenter
+let g:NERDSpaceDelims=1
+" let g:NERDComMappings=0
+" map <leader>cc <plug>NERDCommenterToggle
+" noremap <leader>cc <plug>NERDCommenterToggle
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 
 " motion
-" Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
+" EasyMotion {{{
+" hi EasyMotionTarget guifg=#E4E500 guibg=bg gui=bold
+" hi EasyMotionShade  guifg=#666666 guibg=bg
+" }}}
 Plug 'justinmk/vim-sneak'  "{{{
     augroup SneakPluginColors
         autocmd!
@@ -125,25 +145,15 @@ Plug 'terryma/vim-multiple-cursors' "{{{
     "}}}
 
 
-Plug 'godlygeek/tabular', {'on' : 'Tabularize'}  "{{{
-    nmap <Leader>a& :Tabularize /&<CR>
-    vmap <Leader>a& :Tabularize /&<CR>
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:<CR>
-    vmap <Leader>a: :Tabularize /:<CR>
-    nmap <Leader>a:: :Tabularize /:\zs<CR>
-    vmap <Leader>a:: :Tabularize /:\zs<CR>
-    nmap <Leader>a, :Tabularize /,<CR>
-    vmap <Leader>a, :Tabularize /,<CR>
-    nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-    vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-    "}}}
+Plug 'junegunn/vim-easy-align'  "{{{
+    " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+    vmap <Enter> <Plug>(EasyAlign)
+" }}}
 
 " Layout
 Plug 'bling/vim-airline' "{{{
     let g:airline_powerline_fonts = 1
-    let g:airline_theme="molokai"
+    let g:airline_theme="wombat"
     " Enable the list of buffers
     let g:airline#extensions#tabline#enabled = 1
     " Show just the filename
@@ -167,14 +177,13 @@ Plug 'FelikZ/ctrlp-py-matcher' "{{{
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
     let g:ctrlp_cmd = 'CtrlPMixed'
-    let g:ctrlp_max_height = 10				" maxiumum height of match window
-    let g:ctrlp_switch_buffer = 'et'		" jump to a file if it's open already
-    let g:ctrlp_use_caching = 1				" enable caching
-    let g:ctrlp_clear_cache_on_exit=0  		" speed up by not removing clearing cache evertime
-    let g:ctrlp_mruf_max = 150 				" number of recently opened files
-
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+    let g:ctrlp_max_height = 10				      " maxiumum height of match window
+    let g:ctrlp_switch_buffer = 'et'		      " jump to a file if it's open already
+    let g:ctrlp_use_caching = 1				      " enable caching
+    let g:ctrlp_clear_cache_on_exit = 0           " speed up by not removing clearing cache evertime
+    let g:ctrlp_mruf_max = 150                    " number of recently opened files
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip    " MacOSX/Linux
+    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " Windows
 
     let g:ctrlp_custom_ignore = {
                 \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -183,35 +192,18 @@ Plug 'FelikZ/ctrlp-py-matcher' "{{{
     " ctrlp-funky
     let g:ctrlp_extensions = ['funky']
     let g:ctrlp_funky_syntax_highlight = 1
-    " nnoremap <space> :CtrlPFunky<Cr>
     " narrow the list down with a word under cursor
-    nnoremap <C-g> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+    nnoremap <leader>fc :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 
-    nnoremap <C-f> :CtrlPFunky<cr>
-    nnoremap <C-b> :CtrlPBuffer<cr>
+    nnoremap <leader>ff :CtrlPFunky<cr>
+    nnoremap <leader>bb :CtrlPBuffer<cr>
 
     let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
     "}}}
 
 
-Plug 'Shougo/vimproc.vim', {'do': 'make -f make_mac.mak'}
 Plug 'Shougo/neomru.vim'
-
-
-Plug 'Shougo/vimshell.vim', {'on': ['VimShell', 'VimShellInteractive']} "{{{
-    if g:dtv_set.is_mac
-        let g:vimshell_editor_command='mvim'
-    else
-        let g:vimshell_editor_command='vim'
-    endif
-    let g:vimshell_right_prompt='getcwd()'
-    let g:vimshell_vimshrc_path='~/.vim/vimshrc'
-    nnoremap <leader>t :VimShell -split<CR>
-    "}}}
-
-
-
 
 Plug 'majutsushi/tagbar' "{{{
     nnoremap <F8> :TagbarToggle<CR>
@@ -254,23 +246,22 @@ call plug#end()
 
 " General {
     filetype on
-    filetype plugin indent on   " Automatically detect file types.
-    syntax on                   " syntax highlighting
-    set mouse=a                 " automatically enable mouse usage
-    set mousehide               " Hide the mouse cursor while typing
-    set autoread        " auto read when file is changed from outside
-    set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+    filetype plugin indent on                       " Automatically detect file types.
+    syntax on                                       " syntax highlighting
+    set mouse=a                                     " automatically enable mouse usage
+    set mousehide                                   " Hide the mouse cursor while typing
+    set autoread                                    " auto read when file is changed from outside
+    set shortmess+=filmnrxoOtT                      " abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
-    set virtualedit=onemore         " allow for cursor beyond last character
-    set history=1000                " Store a ton of history (default is 20)
-    " set backup                      " backups are nice ...
-    set undofile                    " so is persistent undo ...
-    set undolevels=1000 "maximum number of changes that can be undone
-    set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-    set fileformat=unix     " file mode is unix
-    set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
-    set noswapfile "disable the swap file
-    set hidden " switch buffer without saving
+    set virtualedit=onemore                         " allow for cursor beyond last character
+    set history=1000                                " Store a ton of history (default is 20)
+    set undofile                                    " so is persistent undo ...
+    set undolevels=1000                             "maximum number of changes that can be undone
+    set undoreload=10000                            "maximum number lines to save for undo on a buffer reload
+    set fileformat=unix                             " file mode is unix
+    set fileformats=unix,dos,mac                    " Prefer Unix over Windows over OS 9 formats
+    set noswapfile                                  "disable the swap file
+    set hidden                                      " switch buffer without saving
 
     " system clipboard integration
     if g:dtv_set.is_mac
@@ -363,21 +354,20 @@ call plug#end()
 
 " Vim UI {
 set background=dark
-colorscheme molokai            " load a colorscheme
-colorscheme base16-tomorrow            " load a colorscheme
-set showcmd                     " Show me what I'm typing
-set showmode                    " display the current mode
-set cursorline                  " highlight current line
-set backspace=indent,eol,start  " backspace for dummys
-set linespace=0                 " No extra spaces between rows
-set number                      " Line numbers on
-set showmatch                   " show matching brackets/parenthesis
-set incsearch                   " find as you type search
-set hlsearch                    " highlight search terms
-set winminheight=0              " windows can be 0 line high
-set ignorecase                  " case insensitive search
-set smartcase                   " case sensitive when uc present
-set laststatus=2                " Always show the statusline
+colorscheme hybrid             " load a colorscheme
+set showcmd                    " Show me what I'm typing
+set showmode                   " display the current mode
+set cursorline                 " highlight current line
+set backspace=indent,eol,start " backspace for dummys
+set linespace=0                " No extra spaces between rows
+set number                     " Line numbers on
+set showmatch                  " show matching brackets/parenthesis
+set incsearch                  " find as you type search
+set hlsearch                   " highlight search terms
+set winminheight=0             " windows can be 0 line high
+set ignorecase                 " case insensitive search
+set smartcase                  " case sensitive when uc present
+set laststatus=2               " Always show the statusline
 
 if !has('nvim')
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -386,11 +376,6 @@ else
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
-
-
-" set list
-" set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-" set fillchars+=vert:\|
 
 " No beep
 set noerrorbells visualbell t_vb=
@@ -455,30 +440,6 @@ endif
 let python_highlight_all = 1
 
 
-
-" set background color after the 80th column {
-" function! SetColorAfter80()
-"     execute "set colorcolumn=81"
-"     if winwidth(0)<=80
-"         hi ColorColumn guibg=#000000 ctermbg=0
-"     else
-"         hi ColorColumn guibg=#2D2D2D ctermbg=246
-"     endif
-" endfunction
-
-" }
-
-
-" hi LineNr          guifg=#465457 guibg=#232526
-" if has("gui_running")
-    " call SetColorAfter80()
-" endif
-
-" augroup Misc
-"     autocmd!
-"     autocmd VimResized * call SetColorAfter80()
-" augroup END
-
 " Set the conceal color to match the molokai theme
 hi Conceal guifg=#F8F8F2 guibg=#1B1D1E
 
@@ -497,13 +458,6 @@ hi PmenuSbar                     guibg=#131414
 hi PmenuThumb      guifg=#777777
 " }}}
 
-
-
-" EasyMotion {{{
-hi EasyMotionTarget guifg=#E4E500 guibg=bg gui=bold
-hi EasyMotionShade  guifg=#666666 guibg=bg
-" }}}
-
 " } UI End
 
 
@@ -516,15 +470,15 @@ set tabstop=4                   " an indentation every four columns
 set softtabstop=4               " let backspace delete indent
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
-autocmd FileType ruby                       setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType php                        setlocal tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType coffee,javascript          setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd BufNewFile,BufReadPost *.coffee     set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType python                     setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType ruby                                   setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType php                                    setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType coffee,javascript                      setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufNewFile,BufReadPost *.coffee                 setlocal foldmethod=indent nofoldenable
+autocmd BufNewFile,BufReadPost *.coffee                 setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType python                                 setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType html,htmldjango,xhtml,haml,jinja2,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType sass,scss,css              setlocal tabstop=4 shiftwidth=4 softtabstop=4
-
-au BufRead,BufNewFile *.jinja2 set filetype=html
+autocmd FileType sass,scss,css                          setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au      BufRead,BufNewFile *.jinja2                     setlocal filetype=html
 
 " }
 
@@ -581,28 +535,19 @@ autocmd BufReadPost *
             \   exe "normal! g`\"" |
             \ endif
 
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
 
-" nnoremap <c-j> <c-w>j
-" nnoremap <c-k> <c-w>k
-" nnoremap <c-h> <c-w>h
-" nnoremap <c-l> <c-w>l
-" map <C-w>j <C-W>j<C-W>_
-" map <C-w>k <C-W>k<C-W>_
-" map <C-w>l <C-W>l<C-W>_
-" map <C-w>h <C-W>h<C-W>_
-
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" tab and buffer switch by arrow keys
+nnoremap <up> :tabnext<CR>
+nnoremap <down> :tabprev<CR>
+nnoremap <left> :bprev<CR>
+nnoremap <right> :bnext<CR>
 
 nnoremap <a-,> :vertical resize -1<CR>
 nnoremap <a-.> :vertical resize +1<CR>
 nnoremap <a-=> :resize +1<CR>
 nnoremap <a--> :resize -1<CR>
 
+" bind Alt+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 nnoremap <a-j> <c-w>j
 nnoremap <a-k> <c-w>k
 nnoremap <a-h> <c-w>h
@@ -629,9 +574,7 @@ endif
 set splitbelow
 set splitright
 
-nnoremap <leader>v :vertical split<CR>
-nnoremap <leader>s :split<CR>
-
+" nnoremap <leader>vt :vertical split<CR>:terminal fish;cd ~;<CR>
 
 " select ALL
 map <C-A> ggVG
@@ -647,23 +590,6 @@ vnoremap > >gv  " better indentation
 " Hot key to change font size
 nnoremap <C-Up> H:call LargerFont()<CR>
 nnoremap <C-Down> H:call SmallerFont()<CR>
-
-" }
-
-
-
-
-if has('win32') || has('win64')
-    " Display user name on Windows.
-    let g:vimshell_prompt = $USERNAME.":~$ "
-else
-    " Display user name on Linux.
-    let g:vimshell_prompt = $USER.":~$ "
-endif
-
-autocmd FileType vimshell
-            \ setlocal nonumber
-" }
 
 " }
 
@@ -720,16 +646,21 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 
 " Beautiful printing
-command! -nargs=* Hardcopy call DoMyPrint('<args>')
-function! DoMyPrint(args)
+" set printexpr="system('open -a Preview '.v:fname_in) + v:shell:error"
+
+set printexpr=PrintFile(v:fname_in)
+function PrintFile(fname)
+  call system("open -a Preview ".a:fname)
+  return v:shell_error
+endfunc
+
+command Hardcopy call Hardcopy()
+function! Hardcopy()
   let colorsave=g:colors_name
   color summerfruit
-  exec 'hardcopy '.a:args
+  exec 'hardcopy'
   exec 'color '.colorsave
-endfunction
-
-
-
+endfun
 
 
 " fix python virtualenv
@@ -745,9 +676,3 @@ if 'PYTHONPATH' not in os.environ:
     os.environ['PYTHONPATH'] += ":".join(sys.path)
 EOF
 endif
-
-
-" buffer switch
-map <C-Tab> :bn<cr>
-map <C-S-Tab> :bp<cr>
-map bd :bd<cr>
