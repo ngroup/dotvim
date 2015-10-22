@@ -6,7 +6,6 @@
     set nocompatible " not compatible with the old-fashion vi mode
 
     let g:dtv_set = {}  " all dotvim configures go here
-
     " detect which os is the current vim running on
     let g:dtv_set.is_windows = has('win16') || has('win32') || has('win64')
     let g:dtv_set.is_cygwin = has('win32unix')
@@ -25,17 +24,11 @@ call plug#begin('~/.vim/plugged')
 " night theme
 Plug 'jordwalke/flatlandia'
 Plug 'tomasr/molokai'
-Plug 'chriskempson/base16-vim'
 Plug 'michalbachowski/vim-wombat256mod'
-Plug 'w0ng/vim-hybrid'
-" let base16colorspace=256
-let g:hybrid_use_Xresources = 1
-
 " day theme (good for printing)
 Plug 'summerfruit.vim'
 
 Plug 'Chiel92/vim-autoformat'
-
 " Highlight css colors
 Plug 'ap/vim-css-color', {'for': ['html', 'css', 'less', 'sass', 'scss', 'javascript', 'coffee', 'coffeescript', 'djantohtml', 'jinja2']}
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
@@ -75,14 +68,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 let g:pandoc#syntax#conceal#use = 0
 
 
-if !has('nvim')
-    Plug 'lukaszkorecki/CoffeeTags'
-    Plug 'sjbach/lusty' "{{{
-        nnoremap <silent> <leader>b :LustyJuggler<cr>
-        let g:LustyJugglerDefaultMappings = 0
-        let g:LustyJugglerShowKeys = 'a'
-        "}}}
-endif
 
 
 " General
@@ -111,23 +96,13 @@ Plug 'scrooloose/syntastic' "{{{
     let g:syntastic_python_checkers=['flake8']
     let g:syntastic_python_flake8_args = "--max-line-length=120"
 "}}}
-Plug 'scrooloose/nerdcommenter'
 
-" NERDCommenter
-let g:NERDSpaceDelims=1
-" let g:NERDComMappings=0
-" map <leader>cc <plug>NERDCommenterToggle
-" noremap <leader>cc <plug>NERDCommenterToggle
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 
 " motion
-Plug 'easymotion/vim-easymotion'
-" EasyMotion {{{
-" hi EasyMotionTarget guifg=#E4E500 guibg=bg gui=bold
-" hi EasyMotionShade  guifg=#666666 guibg=bg
-" }}}
 Plug 'justinmk/vim-sneak'  "{{{
     augroup SneakPluginColors
         autocmd!
@@ -161,70 +136,36 @@ Plug 'bling/vim-airline' "{{{
     let g:airline_detect_crypt = 0
     "}}}
 
-
 Plug 'mhinz/vim-startify' "{{{
     let g:session_directory = "~/.vim/session"
     let g:startify_list_order = ['sessions', 'files']
     "}}}
 Plug 'xolox/vim-misc'
 Plug 'rstacruz/sparkup', {'rtp': 'vim'}
-
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'FelikZ/ctrlp-py-matcher' "{{{
-    let g:ctrlp_map = '<c-p>'
-    " search anything (in files, buffers and MRU files at the same time.)
-    let g:ctrlp_working_path_mode = 'ra'
-    let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
-    let g:ctrlp_cmd = 'CtrlPMixed'
-    let g:ctrlp_max_height = 10				      " maxiumum height of match window
-    let g:ctrlp_switch_buffer = 'et'		      " jump to a file if it's open already
-    let g:ctrlp_use_caching = 1				      " enable caching
-    let g:ctrlp_clear_cache_on_exit = 0           " speed up by not removing clearing cache evertime
-    let g:ctrlp_mruf_max = 150                    " number of recently opened files
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip    " MacOSX/Linux
-    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " Windows
-
-    let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-                \ 'file': '\v\.(exe|so|dll|pyc)$'}
-
-    " ctrlp-funky
-    let g:ctrlp_extensions = ['funky']
-    let g:ctrlp_funky_syntax_highlight = 1
-    " narrow the list down with a word under cursor
-    nnoremap <leader>fc :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-
-
-    nnoremap <leader>ff :CtrlPFunky<cr>
-    nnoremap <leader>bb :CtrlPBuffer<cr>
-
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-    "}}}
-
-
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
 Plug 'Shougo/neomru.vim'
-
 Plug 'majutsushi/tagbar' "{{{
     nnoremap <F8> :TagbarToggle<CR>
     "}}}
 
-Plug 'Valloric/YouCompleteMe', { 'on': [], 'do': './install.sh --clang-completer' }
-Plug 'SirVer/ultisnips', { 'on': [] } "{{{
-    let g:UltiSnipsExpandTrigger="<c-j>"
-    let g:UltiSnipsJumpForwardTrigger="<c-j>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-    "}}}
-Plug 'honza/vim-snippets', { 'on': [] } "{{{
-    let g:ycm_complete_in_comments = 1
-    let g:ycm_collect_identifiers_from_comments_and_strings = 1
-    let g:ycm_seed_identifiers_with_syntax = 1
-    augroup load_us_ycm
-    autocmd!
-    autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
-                        \| call youcompleteme#Enable() | autocmd! load_us_ycm
-    augroup END
-    "}}}
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:loaded_python3_provider = 1
 
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' } "{{{
     nnoremap <F6> :GundoToggle<CR>
@@ -354,7 +295,8 @@ call plug#end()
 
 " Vim UI {
 set background=dark
-colorscheme hybrid             " load a colorscheme
+colorscheme molokai             " load a colorscheme
+" colorscheme kalisi             " load a colorscheme
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
 set cursorline                 " highlight current line
@@ -448,16 +390,6 @@ set foldmethod=indent "fold based on indent
 set foldnestmax=10 "deepest fold is 10 levels
 set nofoldenable "disable folding by default
 set foldlevel=1
-
-
-
-" Completion Menu {{{
-hi Pmenu           guifg=#FCEBB6 guibg=#5E412F
-hi PmenuSel        guifg=#000000 guibg=#FF9203
-hi PmenuSbar                     guibg=#131414
-hi PmenuThumb      guifg=#777777
-" }}}
-
 " } UI End
 
 
@@ -506,7 +438,7 @@ cmap Q q
 cmap Tabe tabe
 
 " Disable highlight
-map <silent> <leader><CR> :noh<CR>
+map <silent> <leader><h> :noh<CR>
 
 """ Code folding options
 nmap <leader>f0 :set foldlevel=0<CR>
@@ -584,47 +516,11 @@ map <C-A> ggVG
 " then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
-
-
-
-" Hot key to change font size
-nnoremap <C-Up> H:call LargerFont()<CR>
-nnoremap <C-Down> H:call SmallerFont()<CR>
-
 " }
 
 
 
 " Functions {
-
-let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
-let s:minfontsize = 6
-let s:maxfontsize = 20
-function! AdjustFontSize(amount)
-    if has("gui_running")
-        let fontname = substitute(&guifont, s:pattern, '\1', '')
-        let cursize = substitute(&guifont, s:pattern, '\2', '')
-        let newsize = cursize + a:amount
-        if (newsize >= s:minfontsize) && (newsize <= s:maxfontsize)
-            let newfont = fontname . newsize
-            let &guifont = newfont
-        endif
-    else
-        echoerr "You need to run the GTK2 version of Vim to use this function."
-    endif
-endfunction
-
-function! LargerFont()
-    call AdjustFontSize(1)
-endfunction
-command! LargerFont call LargerFont()
-
-function! SmallerFont()
-    call AdjustFontSize(-1)
-endfunction
-command! SmallerFont call SmallerFont()
-
-
 
 " Strip trailing whitespace {
 function! StripTrailingWhitespaces()
@@ -676,3 +572,12 @@ if 'PYTHONPATH' not in os.environ:
     os.environ['PYTHONPATH'] += ":".join(sys.path)
 EOF
 endif
+
+
+if has('nvim')
+  let $FZF_DEFAULT_OPTS .= ' --inline-info'
+endif
+
+nnoremap <nowait><silent> <leader><leader> :Files<CR>
+nnoremap <nowait><silent> <leader><CR> :Buffers<CR>
+nnoremap <nowait><silent> <Leader>ag       :Ag <C-R><C-W><CR>
