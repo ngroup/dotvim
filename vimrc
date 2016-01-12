@@ -112,6 +112,8 @@ Plug 'justinmk/vim-sneak'  "{{{
     " }}}
 
 
+Plug 'terryma/vim-expand-region'
+
 Plug 'terryma/vim-multiple-cursors' "{{{
     let g:multi_cursor_next_key='<C-n>'
     let g:multi_cursor_prev_key='<C-p>'
@@ -179,6 +181,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
     map <F5> :NERDTreeToggle<CR>
     "}}}
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'roman/golden-ratio'
+
 
 call plug#end()
 
@@ -417,10 +422,15 @@ au      BufRead,BufNewFile *.jinja2                     setlocal filetype=html
 
 " Key (re)Mappings {
 
-"The default leader is '\', but many people prefer ',' as it's in a standard
-"location
+"===============================================================================
+" Leader Key Mappings
+"===============================================================================
+
+" Map leader and localleader key to comma
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
 
 
 " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
