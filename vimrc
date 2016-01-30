@@ -151,6 +151,18 @@ Plug 'majutsushi/tagbar' "{{{
     nnoremap <F8> :TagbarToggle<CR>
     "}}}
 
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
+if g:python_version =~ 3
+    let g:python2_host_prog = "/usr/bin/python2"
+else
+    let g:python3_host_prog = "/usr/bin/python3"
+endif
+
+
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
 " Track the engine.
@@ -164,10 +176,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
-let g:loaded_python3_provider = 1
 
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' } "{{{
     nnoremap <F6> :GundoToggle<CR>
