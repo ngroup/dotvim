@@ -101,6 +101,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " motion
 Plug 'justinmk/vim-sneak'  "{{{
@@ -127,16 +128,26 @@ Plug 'junegunn/vim-easy-align'  "{{{
     vmap <Enter> <Plug>(EasyAlign)
 " }}}
 
-" Layout
-Plug 'bling/vim-airline' "{{{
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme="wombat"
-    " Enable the list of buffers
-    let g:airline#extensions#tabline#enabled = 1
-    " Show just the filename
-    let g:airline#extensions#tabline#fnamemod = ':t'
-    let g:airline_detect_crypt = 0
-    "}}}
+"" Layout
+"Plug 'bling/vim-airline' "{{{
+"    let g:airline_powerline_fonts = 1
+"    let g:airline_theme="wombat"
+"    " Enable the list of buffers
+"    let g:airline#extensions#tabline#enabled = 1
+"    " Show just the filename
+"    let g:airline#extensions#tabline#fnamemod = ':t'
+"    let g:airline_detect_crypt = 0
+"    "}}}
+
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
 
 Plug 'mhinz/vim-startify' "{{{
     let g:session_directory = "~/.vim/session"
