@@ -25,6 +25,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'jordwalke/flatlandia'
 Plug 'tomasr/molokai'
 Plug 'michalbachowski/vim-wombat256mod'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'w0ng/vim-hybrid'
+Plug 'zeis/vim-kolor'
+
 " day theme (good for printing)
 Plug 'summerfruit.vim'
 
@@ -129,15 +133,6 @@ Plug 'junegunn/vim-easy-align'  "{{{
 " }}}
 
 "" Layout
-"Plug 'bling/vim-airline' "{{{
-"    let g:airline_powerline_fonts = 1
-"    let g:airline_theme="wombat"
-"    " Enable the list of buffers
-"    let g:airline#extensions#tabline#enabled = 1
-"    " Show just the filename
-"    let g:airline#extensions#tabline#fnamemod = ':t'
-"    let g:airline_detect_crypt = 0
-"    "}}}
 
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -204,6 +199,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'roman/golden-ratio'
 
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 
@@ -319,8 +315,9 @@ call plug#end()
 
 
 " Vim UI {
+set t_Co=256
 set background=dark
-colorscheme molokai             " load a colorscheme
+colorscheme wombat256mod             " load a colorscheme
 " colorscheme kalisi             " load a colorscheme
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
@@ -385,6 +382,9 @@ if has("gui_running")
     set guioptions-=r
     set guioptions-=b
 endif
+
+
+
 
 " Set Font
 if has('gui_running')
@@ -498,11 +498,9 @@ autocmd BufReadPost *
             \ endif
 
 
-" tab and buffer switch by arrow keys
-nnoremap <up> :tabnext<CR>
-nnoremap <down> :tabprev<CR>
-nnoremap <left> :bprev<CR>
-nnoremap <right> :bnext<CR>
+set hidden
+nnoremap <C-right> :bnext<CR>
+nnoremap <C-left> :bprev<CR>
 
 nnoremap <a-,> :vertical resize -1<CR>
 nnoremap <a-.> :vertical resize +1<CR>
