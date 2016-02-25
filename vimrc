@@ -207,9 +207,6 @@ call plug#end()
 
 
 " General {
-    filetype on
-    filetype plugin indent on                       " Automatically detect file types.
-    syntax on                                       " syntax highlighting
     set mouse=a                                     " automatically enable mouse usage
     set mousehide                                   " Hide the mouse cursor while typing
     set autoread                                    " auto read when file is changed from outside
