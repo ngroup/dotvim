@@ -499,8 +499,9 @@ autocmd BufReadPost *
 
 
 set hidden
-nnoremap <C-right> :bnext<CR>
-nnoremap <C-left> :bprev<CR>
+nnoremap <SPACE>n :bnext<CR>
+nnoremap <SPACE>p :bprev<CR>
+
 
 nnoremap <a-,> :vertical resize -1<CR>
 nnoremap <a-.> :vertical resize +1<CR>
