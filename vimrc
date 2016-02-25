@@ -213,7 +213,6 @@ call plug#end()
     set shortmess+=filmnrxoOtT                      " abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
     set virtualedit=onemore                         " allow for cursor beyond last character
-    set history=1000                                " Store a ton of history (default is 20)
     set undofile                                    " so is persistent undo ...
     set undolevels=1000                             "maximum number of changes that can be undone
     set undoreload=10000                            "maximum number lines to save for undo on a buffer reload
