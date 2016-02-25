@@ -410,7 +410,7 @@ let python_highlight_all = 1
 " Set the conceal color to match the molokai theme
 hi Conceal guifg=#F8F8F2 guibg=#1B1D1E
 
-hi BufTabLineCurrent ctermbg=117 ctermfg=232
+hi BufTabLineCurrent ctermbg=182 ctermfg=232
 hi BufTabLineFill ctermbg=238
 
 
