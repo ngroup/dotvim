@@ -189,6 +189,12 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
+Plug 'davidhalter/jedi-vim'
+let g:jedi#auto_initialization = 0
+let g:jedi#auto_vim_configuration = 0
+autocmd FileType python setlocal completeopt-=preview
+
+
 
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' } "{{{
     nnoremap <F6> :GundoToggle<CR>
@@ -599,3 +605,7 @@ endif
 nnoremap <nowait><silent> <leader><leader> :Files<CR>
 nnoremap <nowait><silent> <leader><CR> :Buffers<CR>
 nnoremap <nowait><silent> <Leader>ag       :Ag <C-R><C-W><CR>
+
+
+
+nnoremap <silent> <leader>d :call jedi#goto()<cr>
