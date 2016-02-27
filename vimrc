@@ -202,9 +202,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
     map <F5> :NERDTreeToggle<CR>
     "}}}
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-Plug 'roman/golden-ratio'
-
 Plug 'ap/vim-buftabline'
 
 call plug#end()
