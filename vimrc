@@ -593,7 +593,7 @@ endfun
 
 if has('nvim')
   let $FZF_DEFAULT_OPTS .= ' --inline-info'
-  let g:fzf_layout = { 'window': 'top 10 new' }
+  let g:fzf_layout = { 'window': 'bot 13 new' }
 endif
 
 nnoremap <nowait><silent> <leader><leader> :Files<CR>
