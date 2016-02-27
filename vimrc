@@ -156,7 +156,7 @@ Plug 'mhinz/vim-startify' "{{{
     "}}}
 Plug 'xolox/vim-misc'
 Plug 'rstacruz/sparkup', {'rtp': 'vim'}
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'majutsushi/tagbar' "{{{
@@ -596,6 +596,7 @@ endfun
 
 if has('nvim')
   let $FZF_DEFAULT_OPTS .= ' --inline-info'
+  let g:fzf_layout = { 'window': 'top 10 new' }
 endif
 
 nnoremap <nowait><silent> <leader><leader> :Files<CR>
