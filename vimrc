@@ -210,6 +210,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ap/vim-buftabline'
 
+Plug 'edkolev/tmuxline.vim'
+
 call plug#end()
 
 
@@ -518,10 +520,10 @@ nnoremap <a-=> :resize +1<CR>
 nnoremap <a--> :resize -1<CR>
 
 " bind Alt+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-nnoremap <a-j> <c-w>j
-nnoremap <a-k> <c-w>k
-nnoremap <a-h> <c-w>h
-nnoremap <a-l> <c-w>l
+nnoremap <space>j <c-w>j
+nnoremap <space>k <c-w>k
+nnoremap <space>h <c-w>h
+nnoremap <space>l <c-w>l
 vnoremap <a-j> <c-\><c-n><c-w>j
 vnoremap <a-k> <c-\><c-n><c-w>k
 vnoremap <a-h> <c-\><c-n><c-w>h
@@ -535,10 +537,10 @@ cnoremap <a-k> <c-\><c-n><c-w>k
 cnoremap <a-h> <c-\><c-n><c-w>h
 cnoremap <a-l> <c-\><c-n><c-w>l
 if has('nvim')
-  tnoremap <a-j> <c-\><c-n><c-w>j
-  tnoremap <a-k> <c-\><c-n><c-w>k
-  tnoremap <a-h> <c-\><c-n><c-w>h
-  tnoremap <a-l> <c-\><c-n><c-w>l
+  tnoremap <space>j <c-\><c-n><c-w>j
+  tnoremap <space>k <c-\><c-n><c-w>k
+  tnoremap <space>h <c-\><c-n><c-w>h
+  tnoremap <space>l <c-\><c-n><c-w>l
   au WinEnter *pid:* call feedkeys('i')
 endif
 set splitbelow
