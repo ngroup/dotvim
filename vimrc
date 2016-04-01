@@ -34,6 +34,7 @@ Plug 'michalbachowski/vim-wombat256mod'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'zeis/vim-kolor'
+Plug 'chriskempson/base16-vim'
 
 " day theme (good for printing)
 Plug 'summerfruit.vim'
@@ -100,8 +101,8 @@ Plug 'rking/ag.vim' "{{{
         let g:ctrlp_use_caching = 0
     endif
     "}}}
+Plug 'jiangmiao/auto-pairs'
 
-Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic' "{{{
     let g:syntastic_python_checkers=['flake8']
     let g:syntastic_python_flake8_args = "--max-line-length=120"
@@ -510,32 +511,29 @@ autocmd BufReadPost *
 
 
 set hidden
-nnoremap <SPACE>n :bnext<CR>
-nnoremap <SPACE>p :bprev<CR>
+
+nnoremap <silent> = :bn<CR>
+nnoremap <silent> - :bp<CR>
 
 
-nnoremap <a-,> :vertical resize -1<CR>
-nnoremap <a-.> :vertical resize +1<CR>
-nnoremap <a-=> :resize +1<CR>
-nnoremap <a--> :resize -1<CR>
 
-" bind Alt+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
+" bind space+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 nnoremap <space>j <c-w>j
 nnoremap <space>k <c-w>k
 nnoremap <space>h <c-w>h
 nnoremap <space>l <c-w>l
-vnoremap <a-j> <c-\><c-n><c-w>j
-vnoremap <a-k> <c-\><c-n><c-w>k
-vnoremap <a-h> <c-\><c-n><c-w>h
-vnoremap <a-l> <c-\><c-n><c-w>l
-inoremap <a-j> <c-\><c-n><c-w>j
-inoremap <a-k> <c-\><c-n><c-w>k
-inoremap <a-h> <c-\><c-n><c-w>h
-inoremap <a-l> <c-\><c-n><c-w>l
-cnoremap <a-j> <c-\><c-n><c-w>j
-cnoremap <a-k> <c-\><c-n><c-w>k
-cnoremap <a-h> <c-\><c-n><c-w>h
-cnoremap <a-l> <c-\><c-n><c-w>l
+vnoremap <space>j <c-\><c-n><c-w>j
+vnoremap <space>k <c-\><c-n><c-w>k
+vnoremap <space>h <c-\><c-n><c-w>h
+vnoremap <space>l <c-\><c-n><c-w>l
+inoremap <space>j <c-\><c-n><c-w>j
+inoremap <space>k <c-\><c-n><c-w>k
+inoremap <space>h <c-\><c-n><c-w>h
+inoremap <space>l <c-\><c-n><c-w>l
+cnoremap <space>j <c-\><c-n><c-w>j
+cnoremap <space>k <c-\><c-n><c-w>k
+cnoremap <space>h <c-\><c-n><c-w>h
+cnoremap <space>l <c-\><c-n><c-w>l
 if has('nvim')
   tnoremap <space>j <c-\><c-n><c-w>j
   tnoremap <space>k <c-\><c-n><c-w>k
@@ -584,11 +582,11 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 " Beautiful printing
 " set printexpr="system('open -a Preview '.v:fname_in) + v:shell:error"
 
-set printexpr=PrintFile(v:fname_in)
-function PrintFile(fname)
-  call system("open -a Preview ".a:fname)
-  return v:shell_error
-endfunc
+" set printexpr=PrintFile(v:fname_in)
+" function PrintFile(fname)
+"   call system("open -a Preview ".a:fname)
+"   return v:shell_error
+" endfunc
 
 command Hardcopy call Hardcopy()
 function! Hardcopy()
