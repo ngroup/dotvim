@@ -165,8 +165,6 @@ Plug 'majutsushi/tagbar' "{{{
     "}}}
 
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
 if g:python_version =~ 3
@@ -176,18 +174,27 @@ else
 endif
 
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
-
-" Track the engine.
+" " Track the engine.
 Plug 'SirVer/ultisnips'
 
-" Snippets are separated from the engine. Add this if you want them:
+" " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+Plug 'Shougo/deoplete.nvim'
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
+inoremap <silent><expr> <Tab>
+\ pumvisible() ? "\<C-n>" :
+\ deoplete#mappings#manual_complete()
 
 
 Plug 'davidhalter/jedi-vim'
