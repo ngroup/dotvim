@@ -522,18 +522,6 @@ nnoremap <space>j <c-w>j
 nnoremap <space>k <c-w>k
 nnoremap <space>h <c-w>h
 nnoremap <space>l <c-w>l
-vnoremap <space>j <c-\><c-n><c-w>j
-vnoremap <space>k <c-\><c-n><c-w>k
-vnoremap <space>h <c-\><c-n><c-w>h
-vnoremap <space>l <c-\><c-n><c-w>l
-inoremap <space>j <c-\><c-n><c-w>j
-inoremap <space>k <c-\><c-n><c-w>k
-inoremap <space>h <c-\><c-n><c-w>h
-inoremap <space>l <c-\><c-n><c-w>l
-cnoremap <space>j <c-\><c-n><c-w>j
-cnoremap <space>k <c-\><c-n><c-w>k
-cnoremap <space>h <c-\><c-n><c-w>h
-cnoremap <space>l <c-\><c-n><c-w>l
 if has('nvim')
   tnoremap <space>j <c-\><c-n><c-w>j
   tnoremap <space>k <c-\><c-n><c-w>k
