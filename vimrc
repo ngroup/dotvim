@@ -173,6 +173,7 @@ else
     let g:python3_host_prog = "/usr/bin/python3"
 endif
 
+let g:python3_host_prog = "/Users/chun/.pyenv/shims/python3"
 
 " " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -192,9 +193,13 @@ Plug 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
 " Use smartcase.
 let g:deoplete#enable_smart_case = 1
-inoremap <silent><expr> <Tab>
-\ pumvisible() ? "\<C-n>" :
-\ deoplete#mappings#manual_complete()
+inoremap <silent><expr><Tab> pumvisible() ? "\<c-n>"
+			\ : (<SID>is_whitespace() ? "\<Tab>"
+			\ : deoplete#mappings#manual_complete())
+function! s:is_whitespace()
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~? '\s'
+endfunction
 
 
 Plug 'davidhalter/jedi-vim'
