@@ -124,6 +124,9 @@ Plug 'justinmk/vim-sneak'  "{{{
     " }}}
 
 
+Plug 'unblevable/quick-scope'
+
+
 Plug 'terryma/vim-expand-region'
 
 Plug 'terryma/vim-multiple-cursors' "{{{
@@ -507,9 +510,9 @@ nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
 
 " Easier tab operation
-nmap tn :tabnew<CR>
-nmap tj :tabp<CR>
-nmap tk :tabn<CR>
+" nmap tn :tabnew<CR>
+" nmap tj :tabp<CR>
+" nmap tk :tabn<CR>
 
 
 autocmd FileType ruby nmap <S-e> :!ruby %<cr>
