@@ -173,7 +173,7 @@ else
     let g:python3_host_prog = "/usr/bin/python3"
 endif
 
-let g:python3_host_prog = "/Users/chun/.pyenv/shims/python3"
+let g:python3_host_prog = $HOME . "/.pyenv/shims/python3"
 
 " " Track the engine.
 Plug 'SirVer/ultisnips'
