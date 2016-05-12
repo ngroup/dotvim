@@ -35,6 +35,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'zeis/vim-kolor'
 Plug 'chriskempson/base16-vim'
+Plug 'mhartington/oceanic-next'
 
 " day theme (good for printing)
 Plug 'summerfruit.vim'
@@ -340,8 +341,11 @@ call plug#end()
 " Vim UI {
 set t_Co=256
 set background=dark
-colorscheme wombat256mod             " load a colorscheme
+" colorscheme wombat256mod             " load a colorscheme
 " colorscheme kalisi             " load a colorscheme
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme PaperColor
+set background=dark
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
 set cursorline                 " highlight current line
