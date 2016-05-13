@@ -343,9 +343,8 @@ set t_Co=256
 set background=dark
 " colorscheme wombat256mod             " load a colorscheme
 " colorscheme kalisi             " load a colorscheme
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 colorscheme PaperColor
-set background=dark
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
 set cursorline                 " highlight current line
@@ -400,7 +399,6 @@ if has("gui_running")
     set guioptions-=T  "no toolbar
     set guioptions+=e
     set guioptions-=m    "no menu
-    set t_Co=256
     set guitablabel=%M\ %t
     set guioptions-=L
     set guioptions-=l
