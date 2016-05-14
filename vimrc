@@ -343,7 +343,7 @@ set t_Co=256
 set background=dark
 " colorscheme wombat256mod             " load a colorscheme
 " colorscheme kalisi             " load a colorscheme
-set termguicolors
+" set termguicolors
 colorscheme PaperColor
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
@@ -552,7 +552,7 @@ set splitright
 " nnoremap <leader>vt :vertical split<CR>:terminal fish;cd ~;<CR>
 
 " select ALL
-map <C-A> ggVG
+" map <C-A> ggVG
 
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
