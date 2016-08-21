@@ -192,7 +192,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 " Use smartcase.
@@ -200,6 +200,8 @@ let g:deoplete#enable_smart_case = 1
 inoremap <silent><expr><Tab> pumvisible() ? "\<c-n>"
 			\ : (<SID>is_whitespace() ? "\<Tab>"
 			\ : deoplete#mappings#manual_complete())
+
+
 function! s:is_whitespace()
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~? '\s'
