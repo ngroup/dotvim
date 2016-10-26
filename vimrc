@@ -36,6 +36,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'zeis/vim-kolor'
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
+Plug 'sjl/badwolf'
 
 " day theme (good for printing)
 Plug 'summerfruit.vim'
@@ -346,7 +347,8 @@ set background=dark
 " colorscheme wombat256mod             " load a colorscheme
 " colorscheme kalisi             " load a colorscheme
 " set termguicolors
-colorscheme PaperColor
+" colorscheme PaperColor
+colorscheme badwolf
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
 set cursorline                 " highlight current line
