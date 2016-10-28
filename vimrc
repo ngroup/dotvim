@@ -36,6 +36,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'zeis/vim-kolor'
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
+Plug 'sjl/badwolf'
 
 " day theme (good for printing)
 Plug 'summerfruit.vim'
@@ -125,6 +126,9 @@ Plug 'justinmk/vim-sneak'  "{{{
     " }}}
 
 
+Plug 'unblevable/quick-scope'
+
+
 Plug 'terryma/vim-expand-region'
 
 Plug 'terryma/vim-multiple-cursors' "{{{
@@ -174,6 +178,7 @@ else
     let g:python3_host_prog = "/usr/bin/python3"
 endif
 
+let g:python3_host_prog = $HOME . "/.pyenv/shims/python3"
 
 " " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -188,14 +193,20 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 " Use smartcase.
 let g:deoplete#enable_smart_case = 1
-inoremap <silent><expr> <Tab>
-\ pumvisible() ? "\<C-n>" :
-\ deoplete#mappings#manual_complete()
+inoremap <silent><expr><Tab> pumvisible() ? "\<c-n>"
+			\ : (<SID>is_whitespace() ? "\<Tab>"
+			\ : deoplete#mappings#manual_complete())
+
+
+function! s:is_whitespace()
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~? '\s'
+endfunction
 
 
 Plug 'davidhalter/jedi-vim'
@@ -334,8 +345,11 @@ call plug#end()
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 colorscheme wombat256mod             " load a colorscheme
-" colorscheme OceanicNext
+colorscheme OceanicNext
 " colorscheme kalisi             " load a colorscheme
+" set termguicolors
+" colorscheme PaperColor
+colorscheme badwolf
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
 set cursorline                 " highlight current line
@@ -390,7 +404,6 @@ if has("gui_running")
     set guioptions-=T  "no toolbar
     set guioptions+=e
     set guioptions-=m    "no menu
-    set t_Co=256
     set guitablabel=%M\ %t
     set guioptions-=L
     set guioptions-=l
@@ -504,9 +517,9 @@ nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
 
 " Easier tab operation
-nmap tn :tabnew<CR>
-nmap tj :tabp<CR>
-nmap tk :tabn<CR>
+" nmap tn :tabnew<CR>
+" nmap tj :tabp<CR>
+" nmap tk :tabn<CR>
 
 
 autocmd FileType ruby nmap <S-e> :!ruby %<cr>
@@ -544,7 +557,7 @@ set splitright
 " nnoremap <leader>vt :vertical split<CR>:terminal fish;cd ~;<CR>
 
 " select ALL
-map <C-A> ggVG
+" map <C-A> ggVG
 
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
