@@ -231,6 +231,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ap/vim-buftabline'
 Plug 'edkolev/tmuxline.vim'
 
+Plug 'junegunn/goyo.vim'
+Plug 'romainl/Apprentice'
+
 call plug#end()
 
 
@@ -344,8 +347,8 @@ call plug#end()
 " set t_Co=256
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme wombat256mod             " load a colorscheme
-colorscheme OceanicNext
+" colorscheme wombat256mod             " load a colorscheme
+" colorscheme OceanicNext
 " colorscheme kalisi             " load a colorscheme
 " set termguicolors
 " colorscheme PaperColor
@@ -645,4 +648,26 @@ call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  colorscheme apprentice
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  colorscheme badwolf
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
