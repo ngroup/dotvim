@@ -43,7 +43,7 @@ Plug 'summerfruit.vim'
 
 Plug 'Chiel92/vim-autoformat'
 " Highlight css colors
-Plug 'ap/vim-css-color', {'for': ['html', 'css', 'less', 'sass', 'scss', 'javascript', 'coffee', 'coffeescript', 'djantohtml', 'jinja2']}
+Plug 'ap/vim-css-color', {'for': ['html', 'css', 'less', 'sass', 'scss', 'javascript', 'coffee', 'coffeescript', 'djantohtml', 'jinja2', 'python']}
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
 " syntax for HTML5
 Plug 'othree/html5.vim'
@@ -233,7 +233,7 @@ Plug 'edkolev/tmuxline.vim'
 
 Plug 'junegunn/goyo.vim'
 Plug 'romainl/Apprentice'
-
+Plug 'kien/rainbow_parentheses.vim'
 call plug#end()
 
 
@@ -601,11 +601,11 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 "   return v:shell_error
 " endfunc
 
-command Hardcopy call Hardcopy()
-function! Hardcopy()
+command -nargs=1 Hardcopy call Hardcopy(<f-args>)
+function! Hardcopy(fpath)
   let colorsave=g:colors_name
   color summerfruit
-  exec 'hardcopy'
+  exec 'hardcopy > ' . fpath
   exec 'color '.colorsave
 endfun
 
