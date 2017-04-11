@@ -126,11 +126,6 @@ Plug 'justinmk/vim-sneak'  "{{{
     " }}}
 
 
-Plug 'unblevable/quick-scope'
-
-
-Plug 'terryma/vim-expand-region'
-
 Plug 'terryma/vim-multiple-cursors' "{{{
     let g:multi_cursor_next_key='<C-n>'
     let g:multi_cursor_prev_key='<C-p>'
