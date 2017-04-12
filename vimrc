@@ -229,6 +229,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'romainl/Apprentice'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'noahfrederick/vim-hemisu'
+Plug 'benmills/vimux'
 call plug#end()
 
 
@@ -346,8 +348,8 @@ set background=dark
 " colorscheme OceanicNext
 " colorscheme kalisi             " load a colorscheme
 " set termguicolors
-" colorscheme PaperColor
-colorscheme badwolf
+colorscheme PaperColor
+" colorscheme badwolf
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
 set cursorline                 " highlight current line
