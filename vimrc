@@ -220,7 +220,7 @@ Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' } "{{{
     nnoremap <F6> :GundoToggle<CR>
     "}}}
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
+Plug 'scrooloose/nerdtree' "{{{
     let NERDTreeChDirMode=2
     let NERDTreeIgnore = ['\.pyc$']
     let NERDTreeShowHidden=0
@@ -234,6 +234,16 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'romainl/Apprentice'
 Plug 'kien/rainbow_parentheses.vim'
+
+" markdown preview
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    !cargo build --release
+  endif
+endfunction
+
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+
 call plug#end()
 
 
