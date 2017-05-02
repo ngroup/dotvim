@@ -368,22 +368,16 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 " }
 
 
-" Beautiful printing
-" set printexpr="system('open -a Preview '.v:fname_in) + v:shell:error"
-
-" set printexpr=PrintFile(v:fname_in)
-" function PrintFile(fname)
-"   call system("open -a Preview ".a:fname)
-"   return v:shell_error
-" endfunc
-
-command -nargs=1 Hardcopy call Hardcopy(<f-args>)
-function! Hardcopy(fpath)
+function! Pretty_print(print_path)
   let colorsave=g:colors_name
-  color summerfruit
-  exec 'hardcopy > ' . fpath
-  exec 'color '.colorsave
+  set printfont=Courier:h10
+  set background=dark
+  colorscheme PaperColor
+  exec 'hardcopy > '.a:print_path
+  exec 'colorscheme '.colorsave
+  set background=dark
 endfun
+command! -nargs=1 Hardcopy call Pretty_print(<f-args>)
 
 
 if has('nvim')

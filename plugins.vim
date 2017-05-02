@@ -21,6 +21,7 @@ Plug 'zeis/vim-kolor'
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'sjl/badwolf'
+Plug 'altercation/vim-colors-solarized'
 
 " day theme (good for printing)
 Plug 'summerfruit.vim'
