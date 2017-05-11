@@ -47,11 +47,8 @@ Plug 'fatih/vim-go'
 
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-" vim-pandoc-syntax not use conceal
-let g:pandoc#syntax#conceal#use = 0
-
-
-
+    " vim-pandoc-syntax not use conceal
+    let g:pandoc#syntax#conceal#use = 0
 
 " General
 Plug 'editorconfig/editorconfig-vim'
@@ -59,18 +56,8 @@ Plug 'rking/ag.vim' "{{{
     nnoremap \ :Ag<SPACE>
     " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
     if executable('ag')
-    " Use Ag over Grep
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-        let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-            \ --ignore .git
-            \ --ignore .svn
-            \ --ignore .hg
-            \ --ignore .DS_Store
-            \ --ignore "**/*.pyc"
-            \ -g ""'
-        let g:ctrlp_use_caching = 0
+        " Use Ag over Grep
+        set grepprg=ag\ --nogroup\ --nocolor
     endif
     "}}}
 Plug 'jiangmiao/auto-pairs'
@@ -81,8 +68,6 @@ Plug 'scrooloose/syntastic' "{{{
 "}}}
 
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
@@ -118,10 +103,6 @@ Plug 'majutsushi/tagbar' "{{{
     nnoremap <F8> :TagbarToggle<CR>
     "}}}
 
-
-
-
-
 " " Track the engine.
 Plug 'SirVer/ultisnips'
 
@@ -156,11 +137,6 @@ function! s:is_whitespace()
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~? '\s'
 endfunction
-
-" Plug 'davidhalter/jedi-vim'
-"     let g:jedi#auto_initialization = 0
-"     let g:jedi#auto_vim_configuration = 0
-"     autocmd FileType python setlocal completeopt-=preview
 
 
 
