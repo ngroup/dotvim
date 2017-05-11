@@ -175,31 +175,84 @@ endfunction
 
 
 Plug 'davidhalter/jedi-vim'
-let g:jedi#auto_initialization = 0
-let g:jedi#auto_vim_configuration = 0
-autocmd FileType python setlocal completeopt-=preview
+    let g:jedi#auto_initialization = 0
+    let g:jedi#auto_vim_configuration = 0
+    autocmd FileType python setlocal completeopt-=preview
 
 
 
-Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' } "{{{
-    nnoremap <F6> :GundoToggle<CR>
-    "}}}
-
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
-    let NERDTreeChDirMode=2
-    let NERDTreeIgnore = ['\.pyc$']
-    let NERDTreeShowHidden=0
-    let NERDTreeMinimalUI=0
-    map <F5> :NERDTreeToggle<CR>
-    "}}}
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ap/vim-buftabline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'benmills/vimux'
 
 " color and UI enhancement
 " UI
+Plug 'ap/vim-buftabline'
+    set hidden
+    nnoremap <silent> = :bn<CR>
+    nnoremap <silent> - :bp<CR>
+
+Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
+    nnoremap <F6> :GundoToggle<CR>
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    let NERDTreeChDirMode=2
+    let NERDTreeIgnore = ['\.pyc$']
+    let NERDTreeShowHidden=0
+    let NERDTreeMinimalUI=0
+    map <F5> :NERDTreeToggle<CR>
+
+    " NERDTress File highlighting
+    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+        exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+        exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+    endfunction
+
+    call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+    call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+    call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+    call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+    call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+    call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+    call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+    call NERDTreeHighlightFile('py', 'Magenta', 'none', '#ff00ff', '#151515')
+    call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 Plug 'junegunn/goyo.vim'
+    function! s:goyo_enter()
+        silent !tmux set status off
+        silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+        set noshowmode
+        set noshowcmd
+        set scrolloff=999
+        colorscheme apprentice
+    endfunction
+
+    function! s:goyo_leave()
+        silent !tmux set status on
+        silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+        set showmode
+        set showcmd
+        set scrolloff=5
+        colorscheme monokai
+    endfunction
+
+    autocmd! User GoyoEnter nested call <SID>goyo_enter()
+    autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+
 Plug 'junegunn/rainbow_parentheses.vim'  " colorful parentheses
     " Activation based on file type
     augroup rainbow_langs
@@ -223,4 +276,3 @@ Plug 'vim-scripts/summerfruit.vim'
 Plug 'noahfrederick/vim-hemisu'
 
 call plug#end()
-

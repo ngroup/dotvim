@@ -307,13 +307,6 @@ autocmd BufReadPost *
             \ endif
 
 
-set hidden
-
-nnoremap <silent> = :bn<CR>
-nnoremap <silent> - :bp<CR>
-
-
-
 " bind space+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 nnoremap <space>j <c-w>j
 nnoremap <space>k <c-w>k
@@ -363,15 +356,14 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 " }
 
-
 function! Pretty_print(print_path)
-  let colorsave=g:colors_name
-  set printfont=Courier:h10
-  set background=dark
-  colorscheme PaperColor
-  exec 'hardcopy > '.a:print_path
-  exec 'colorscheme '.colorsave
-  set background=dark
+    let colorsave=g:colors_name
+    set printfont=Courier:h10
+    set background=dark
+    colorscheme PaperColor
+    exec 'hardcopy > '.a:print_path
+    exec 'colorscheme '.colorsave
+    set background=dark
 endfun
 command! -nargs=1 Hardcopy call Pretty_print(<f-args>)
 
@@ -385,55 +377,4 @@ nnoremap <nowait><silent> <leader><leader> :Files<CR>
 nnoremap <nowait><silent> <leader><CR> :Buffers<CR>
 nnoremap <nowait><silent> <Leader>ag       :Ag <C-R><C-W><CR>
 
-
-
 nnoremap <silent> <leader>d :call jedi#goto()<cr>
-
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('py', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
-
-
-function! s:goyo_enter()
-  silent !tmux set status off
-  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  colorscheme apprentice
-endfunction
-
-function! s:goyo_leave()
-  silent !tmux set status on
-  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  set showmode
-  set showcmd
-  set scrolloff=5
-  colorscheme monokai
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
