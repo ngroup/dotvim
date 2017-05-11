@@ -123,12 +123,8 @@ source ~/.config/nvim/plugins.vim
 " set t_Co=256
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-" colorscheme wombat256mod             " load a colorscheme
-" colorscheme OceanicNext
-" colorscheme kalisi             " load a colorscheme
-" set termguicolors
-colorscheme PaperColor
-" colorscheme badwolf
+set termguicolors
+colorscheme monokai
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
 set cursorline                 " highlight current line
@@ -435,7 +431,7 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   set scrolloff=5
-  colorscheme badwolf
+  colorscheme monokai
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()

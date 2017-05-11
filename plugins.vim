@@ -10,21 +10,6 @@ endif
 let g:plug_url_format = 'https://github.com/%s'
 call plug#begin('~/.config/nvim/plugged')
 
-" Theme
-" night theme
-Plug 'jordwalke/flatlandia'
-Plug 'tomasr/molokai'
-Plug 'michalbachowski/vim-wombat256mod'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'w0ng/vim-hybrid'
-Plug 'zeis/vim-kolor'
-Plug 'chriskempson/base16-vim'
-Plug 'mhartington/oceanic-next'
-Plug 'sjl/badwolf'
-Plug 'altercation/vim-colors-solarized'
-
-" day theme (good for printing)
-Plug 'vim-scripts/summerfruit.vim'
 
 Plug 'Chiel92/vim-autoformat'
 " Highlight css colors
@@ -210,11 +195,32 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ap/vim-buftabline'
 Plug 'edkolev/tmuxline.vim'
-
-Plug 'junegunn/goyo.vim'
-Plug 'romainl/Apprentice'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'noahfrederick/vim-hemisu'
 Plug 'benmills/vimux'
+
+" color and UI enhancement
+" UI
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/rainbow_parentheses.vim'  " colorful parentheses
+    " Activation based on file type
+    augroup rainbow_langs
+    autocmd!
+    autocmd FileType python RainbowParentheses
+    augroup END
+
+" dark theme
+Plug 'blerins/flattown'
+Plug 'sickill/vim-monokai'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'mhartington/oceanic-next'
+Plug 'altercation/vim-colors-solarized'
+Plug 'romainl/Apprentice'
+Plug 'danilo-augusto/vim-afterglow'
+
+" light theme (good for printing)
+Plug 'vim-scripts/summerfruit.vim'
+
+" dark and light
+Plug 'noahfrederick/vim-hemisu'
+
 call plug#end()
 
