@@ -24,7 +24,7 @@ Plug 'sjl/badwolf'
 Plug 'altercation/vim-colors-solarized'
 
 " day theme (good for printing)
-Plug 'summerfruit.vim'
+Plug 'vim-scripts/summerfruit.vim'
 
 Plug 'Chiel92/vim-autoformat'
 " Highlight css colors
