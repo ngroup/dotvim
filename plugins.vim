@@ -159,25 +159,31 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-" Use smartcase.
-let g:deoplete#enable_smart_case = 1
-inoremap <silent><expr><Tab> pumvisible() ? "\<c-n>"
-			\ : (<SID>is_whitespace() ? "\<Tab>"
-			\ : deoplete#mappings#manual_complete())
+    " Use deoplete.
+    let g:deoplete#enable_at_startup = 1
+    " Use smartcase.
+    let g:deoplete#enable_smart_case = 1
+    inoremap <silent><expr><Tab> pumvisible() ? "\<c-n>"
+                \ : (<SID>is_whitespace() ? "\<Tab>"
+                \ : deoplete#mappings#manual_complete())
 
+Plug 'zchee/deoplete-jedi'
+    let g:deoplete#sources#jedi#show_docstring = 1
+    " If you prefer the Omni-Completion tip window to close when a selection is
+    " made, these lines close it on movement in insert mode or when leaving
+    " insert mode
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 function! s:is_whitespace()
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~? '\s'
 endfunction
 
-
-Plug 'davidhalter/jedi-vim'
-    let g:jedi#auto_initialization = 0
-    let g:jedi#auto_vim_configuration = 0
-    autocmd FileType python setlocal completeopt-=preview
+" Plug 'davidhalter/jedi-vim'
+"     let g:jedi#auto_initialization = 0
+"     let g:jedi#auto_vim_configuration = 0
+"     autocmd FileType python setlocal completeopt-=preview
 
 
 
