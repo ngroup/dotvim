@@ -373,7 +373,7 @@ if has('nvim')
 endif
 
 nnoremap <nowait><silent> <leader><leader> :Files<CR>
-nnoremap <nowait><silent> <leader><CR> :Buffers<CR>
+nnoremap <nowait><silent> <leader><CR>     :Buffers<CR>
 nnoremap <nowait><silent> <Leader>ag       :Ag <C-R><C-W><CR>
 
 nnoremap <silent> <leader>d :call jedi#goto()<cr>
