@@ -97,6 +97,11 @@ Plug 'junegunn/vim-easy-align'  "{{{
 Plug 'rstacruz/sparkup', {'rtp': 'vim'} " A parser for a condensed HTML format
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+    let $FZF_DEFAULT_OPTS .= ' --inline-info'
+    let g:fzf_layout = { 'window': 'bot 13 new' }
+    nnoremap <nowait><silent> <leader><leader> :Files<CR>
+    nnoremap <nowait><silent> <leader><CR>     :Buffers<CR>
+
 Plug 'Shougo/neomru.vim'
 Plug 'majutsushi/tagbar' "{{{
     nnoremap <F8> :TagbarToggle<CR>

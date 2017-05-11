@@ -208,9 +208,6 @@ if has('gui_running')
 endif
 
 
-let python_highlight_all = 1
-
-
 " Set the conceal color to match the molokai theme
 hi Conceal guifg=#F8F8F2 guibg=#1B1D1E
 
@@ -290,12 +287,6 @@ nmap <leader>f7 :set foldlevel=7<CR>
 nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
 
-" Easier tab operation
-" nmap tn :tabnew<CR>
-" nmap tj :tabp<CR>
-" nmap tk :tabn<CR>
-
-
 autocmd FileType ruby nmap <S-e> :!ruby %<cr>
 autocmd FileType python nmap <S-e> :!python %<cr>
 
@@ -323,8 +314,6 @@ set splitright
 
 " nnoremap <leader>vt :vertical split<CR>:terminal fish;cd ~;<CR>
 
-" select ALL
-" map <C-A> ggVG
 
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
@@ -332,10 +321,6 @@ set splitright
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 " }
-
-
-
-" Functions {
 
 " Strip trailing whitespace {
 function! StripTrailingWhitespaces()
@@ -353,8 +338,6 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 " }
 
 
-" }
-
 function! Pretty_print(print_path)
     let colorsave=g:colors_name
     set printfont=Courier:h10
@@ -365,19 +348,6 @@ function! Pretty_print(print_path)
     set background=dark
 endfun
 command! -nargs=1 Hardcopy call Pretty_print(<f-args>)
-
-
-if has('nvim')
-  let $FZF_DEFAULT_OPTS .= ' --inline-info'
-  let g:fzf_layout = { 'window': 'bot 13 new' }
-endif
-
-nnoremap <nowait><silent> <leader><leader> :Files<CR>
-nnoremap <nowait><silent> <leader><CR>     :Buffers<CR>
-nnoremap <nowait><silent> <Leader>ag       :Ag <C-R><C-W><CR>
-
-nnoremap <silent> <leader>d :call jedi#goto()<cr>
-
 
 let g:python_host_prog = $HOME . "/.pyenv/versions/neovim2/bin/python"
 let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim/bin/python3"
