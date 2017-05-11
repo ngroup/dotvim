@@ -145,6 +145,10 @@ if has('autocmd')
     autocmd GUIEnter * set visualbell t_vb=
 endif
 
+" cursor shape changes
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+au VimLeave * set guicursor=a:block-blinkon0
+
 
 " Restore cursor to file position in previous editing session
 function! ResCur()
