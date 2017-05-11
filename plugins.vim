@@ -29,13 +29,12 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html', 'jinja2']} "{{{
     let g:html_indent_style1 = "inc"
     "}}}
 Plug 'kchmck/vim-coffee-script'
-" for zencoding
-Plug 'mattn/emmet-vim', {'for': ['html','xml','xsl','xslt','xsd','css','sass','scss','less','mustache','jinja2']}
-Plug 'gregsexton/MatchTag', {'for':['html','xml','jinja2']}
 
+" python syntax
 Plug 'hynek/vim-python-pep8-indent', {'for': ['python']}
 Plug 'jmcantrell/vim-virtualenv', {'for': ['python']}
 Plug 'hdima/python-syntax'
+    let g:python_highlight_all = 1
 
 " Vim Jade template engine syntax highlighting and indention
 Plug 'digitaltoad/vim-jade'
