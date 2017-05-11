@@ -87,13 +87,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " motion
-Plug 'justinmk/vim-sneak'  "{{{
+Plug 'justinmk/vim-sneak'
+    let g:sneak#s_next = 1
     augroup SneakPluginColors
         autocmd!
         autocmd ColorScheme * hi SneakPluginTarget guifg=black guibg=red ctermfg=black ctermbg=red
         autocmd ColorScheme * hi SneakPluginScope  guifg=black guibg=yellow ctermfg=black ctermbg=yellow
     augroup END
-    " }}}
 
 
 Plug 'terryma/vim-multiple-cursors' "{{{
