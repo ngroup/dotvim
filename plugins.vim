@@ -109,24 +109,8 @@ Plug 'junegunn/vim-easy-align'  "{{{
     vmap <Enter> <Plug>(EasyAlign)
 " }}}
 
-"" Layout
 
-Plug 'itchyny/lightline.vim'
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
-
-Plug 'mhinz/vim-startify' "{{{
-    let g:session_directory = "~/.vim/session"
-    let g:startify_list_order = ['sessions', 'files']
-    "}}}
-Plug 'xolox/vim-misc'
-Plug 'rstacruz/sparkup', {'rtp': 'vim'}
+Plug 'rstacruz/sparkup', {'rtp': 'vim'} " A parser for a condensed HTML format
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/neomru.vim'
@@ -192,6 +176,20 @@ Plug 'benmills/vimux'
 
 " color and UI enhancement
 " UI
+Plug 'itchyny/lightline.vim'
+    let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'component': {
+        \   'readonly': '%{&readonly?"":""}',
+        \ },
+        \ 'separator': { 'left': '', 'right': '' },
+        \ 'subseparator': { 'left': '', 'right': '' }
+        \ }
+
+Plug 'mhinz/vim-startify'
+    let g:session_directory = "~/.vim/session"
+    let g:startify_list_order = ['sessions', 'files']
+
 Plug 'ap/vim-buftabline'
     set hidden
     nnoremap <silent> = :bn<CR>
