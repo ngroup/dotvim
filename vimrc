@@ -378,3 +378,7 @@ nnoremap <nowait><silent> <leader><CR> :Buffers<CR>
 nnoremap <nowait><silent> <Leader>ag       :Ag <C-R><C-W><CR>
 
 nnoremap <silent> <leader>d :call jedi#goto()<cr>
+
+
+let g:python_host_prog = $HOME . "/.pyenv/versions/neovim2/bin/python"
+let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim/bin/python3"

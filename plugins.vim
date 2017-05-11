@@ -120,14 +120,7 @@ Plug 'majutsushi/tagbar' "{{{
 
 
 
-let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
-if g:python_version =~ 3
-    let g:python2_host_prog = "/usr/bin/python2"
-else
-    let g:python3_host_prog = "/usr/bin/python3"
-endif
 
-let g:python3_host_prog = $HOME . "/.pyenv/shims/python3"
 
 " " Track the engine.
 Plug 'SirVer/ultisnips'
