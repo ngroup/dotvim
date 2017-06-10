@@ -61,10 +61,10 @@ Plug 'rking/ag.vim' "{{{
     "}}}
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'scrooloose/syntastic' "{{{
-    let g:syntastic_python_checkers=['flake8']
-    let g:syntastic_python_flake8_args = "--max-line-length=120"
-"}}}
+"Plug 'scrooloose/syntastic' "{{{
+"    let g:syntastic_python_checkers=['flake8']
+"    let g:syntastic_python_flake8_args = "--max-line-length=120"
+""}}}
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -251,5 +251,8 @@ Plug 'vim-scripts/summerfruit.vim'
 
 " dark and light
 Plug 'noahfrederick/vim-hemisu'
+
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'w0rp/ale'
 
 call plug#end()
