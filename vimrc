@@ -122,7 +122,7 @@ source ~/.config/nvim/plugins.vim
 " Vim UI {
 " set t_Co=256
 set background=dark
-set termguicolors
+" set termguicolors
 colorscheme monokai
 set showcmd                    " Show me what I'm typing
 set showmode                   " display the current mode
@@ -208,8 +208,8 @@ endif
 " Set the conceal color to match the molokai theme
 hi Conceal guifg=#F8F8F2 guibg=#1B1D1E
 
-hi BufTabLineCurrent ctermbg=182 ctermfg=232
 hi BufTabLineFill ctermbg=238
+hi BufTabLineCurrent ctermbg=182 guifg=#ff0087
 
 
 "folding settings
@@ -295,15 +295,15 @@ autocmd BufReadPost *
 
 
 " bind space+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-nnoremap <space>j <c-w>j
-nnoremap <space>k <c-w>k
-nnoremap <space>h <c-w>h
-nnoremap <space>l <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 if has('nvim')
-  tnoremap <space>j <c-\><c-n><c-w>j
-  tnoremap <space>k <c-\><c-n><c-w>k
-  tnoremap <space>h <c-\><c-n><c-w>h
-  tnoremap <space>l <c-\><c-n><c-w>l
+  tnoremap <c-j> <c-\><c-n><c-w>j
+  tnoremap <c-k> <c-\><c-n><c-w>k
+  tnoremap <c-h> <c-\><c-n><c-w>h
+  tnoremap <c-l> <c-\><c-n><c-w>l
   au WinEnter *pid:* call feedkeys('i')
 endif
 set splitbelow
