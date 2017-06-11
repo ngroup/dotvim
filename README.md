@@ -1,15 +1,9 @@
-## Dotvim
-
-### A fine-tuned Vim configuration.
-
+# Dotvim
+My configurations for Neovim.
 
 
-#### Key-mapping
+## Python IDE
 
-
-CtrlP
-C-p : Open CtrlP menu
-C-f :
-C-b :
-
-CtrlP
+### julienr/vim-cellmode
+`C-c`
+Execute the currently selected block in ipython (tmux pane 1)
