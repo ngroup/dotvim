@@ -239,7 +239,7 @@ endfunction
 
 
 
-Plug 'julienr/vim-cellmode'
+Plug 'ngroup/vim-cellmode'
     let g:cellmode_tmux_sessionname = ''
     let g:cellmode_tmux_windowname = ''
     let g:cellmode_tmux_panenumber='1'
