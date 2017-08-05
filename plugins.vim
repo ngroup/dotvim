@@ -121,8 +121,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 """ Language
-" Plug 'Chiel92/vim-autoformat'
-Plug 'sbdchd/neoformat'
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss', 'sass'] }
 Plug 'othree/html5.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -134,14 +132,13 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html', 'jinja2']} "{{{
     let g:html_indent_style1 = "inc"
     "}}}
 Plug 'kchmck/vim-coffee-script'
+
+" python syntax
 Plug 'hdima/python-syntax'
     let g:python_highlight_all = 1
-" python syntax
 Plug 'hynek/vim-python-pep8-indent', {'for': ['python']}
 Plug 'jmcantrell/vim-virtualenv', {'for': ['python']}
 
-
-" Vim Jade template engine syntax highlighting and indention
 Plug 'digitaltoad/vim-jade'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'dag/vim-fish'
@@ -153,16 +150,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
-Plug 'rking/ag.vim' "{{{
-    nnoremap \ :Ag<SPACE>
-    " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-    if executable('ag')
-        " Use Ag over Grep
-        set grepprg=ag\ --nogroup\ --nocolor
-    endif
-    "}}}
 Plug 'jiangmiao/auto-pairs'
-
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -183,14 +171,11 @@ Plug 'terryma/vim-multiple-cursors' "{{{
     let g:multi_cursor_quit_key='<Esc>'
     "}}}
 
-
 Plug 'junegunn/vim-easy-align'  "{{{
     " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
     vmap <Enter> <Plug>(EasyAlign)
 " }}}
 
-
-Plug 'rstacruz/sparkup', {'rtp': 'vim'} " A parser for a condensed HTML format
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
     let $FZF_DEFAULT_OPTS .= ' --inline-info'
@@ -239,14 +224,7 @@ function! s:is_whitespace()
 endfunction
 
 
-
-Plug 'ngroup/vim-cellmode'
-    let g:cellmode_tmux_sessionname = ''
-    let g:cellmode_tmux_windowname = ''
-    let g:cellmode_tmux_panenumber='1'
-
-
-
 Plug 'w0rp/ale'
+    let g:ale_lint_on_text_changed = 'normal'
 
 call plug#end()
