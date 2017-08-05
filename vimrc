@@ -13,6 +13,12 @@
     let g:dtv_set.is_linux = !g:dtv_set.is_windows && !g:dtv_set.is_cygwin && !g:dtv_set.is_mac
 " }
 
+" Map leader and localleader key to comma
+let mapleader = ","
+let g:mapleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
+
 source ~/.config/nvim/plugins.vim
 
 " General {
@@ -243,17 +249,6 @@ au      BufRead,BufNewFile *.jinja2                     setlocal filetype=html
 
 
 " Key (re)Mappings {
-
-"===============================================================================
-" Leader Key Mappings
-"===============================================================================
-
-" Map leader and localleader key to comma
-let mapleader = ","
-let g:mapleader = ","
-let maplocalleader = ","
-let g:maplocalleader = ","
-
 
 " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
 nnoremap ; :
