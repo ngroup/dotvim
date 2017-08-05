@@ -1,18 +1,6 @@
 " ======================
 " My vim configurations
 " ======================
-
-" Environment {
-    set nocompatible " not compatible with the old-fashion vi mode
-
-    let g:dtv_set = {}  " all dotvim configures go here
-    " detect which os is the current vim running on
-    let g:dtv_set.is_windows = has('win16') || has('win32') || has('win64')
-    let g:dtv_set.is_cygwin = has('win32unix')
-    let g:dtv_set.is_mac = has('mac') || has('macunix') || has('gui_macvim')
-    let g:dtv_set.is_linux = !g:dtv_set.is_windows && !g:dtv_set.is_cygwin && !g:dtv_set.is_mac
-" }
-
 " Map leader and localleader key to comma
 let mapleader = ","
 let g:mapleader = ","
@@ -37,24 +25,14 @@ source ~/.config/nvim/plugins.vim
     set hidden                                      " switch buffer without saving
 
     " system clipboard integration
-    if g:dtv_set.is_mac
-        set clipboard=unnamed
-    elseif g:dtv_set.is_linux
-        set clipboard=unnamedplus
-    endif
+    set clipboard=unnamedplus
 
     autocmd BufEnter * silent! lcd %:p:h   " auto change the current directory
 
     " InitDirectories {
     function! InitDirectories()
-        if g:dtv_set.is_windows
-            let l:separator = '_'
-            let l:parent = $HOME . '/' . 'vimfiles/'
-        else
-            let l:separator = '.'
-            let l:parent = $HOME . '/' . l:separator . 'vim/'
-        endif
-
+        let l:separator = '.'
+        let l:parent = $HOME . '/' . l:separator . 'vim/'
         let l:backup = l:parent . 'backup/'
         let l:tmp = l:parent . 'tmp/'
         let l:undodir = l:parent . 'undodir/'
@@ -189,27 +167,6 @@ if has("gui_running")
     set guioptions-=r
     set guioptions-=b
 endif
-
-
-
-
-" Set Font
-if has('gui_running')
-    if g:dtv_set.is_mac
-        set guifont=Inconsolata\ for\ Powerline:h20,
-                    \Inconsolata:h20,
-                    \Monaco:h20,
-                    \Courier:h20
-    elseif g:dtv_set.is_windows
-        set guifont=Consolas:h18
-    elseif g:dtv_set.is_linux
-        set guifont=Inconsolata\ for\ Powerline\ 14,
-                    \Inconsolata\ 16,
-                    \Droid\ Sans\ Mono\ 16,
-                    \Ubuntu\ Mono\ 18
-    endif
-endif
-
 
 " Set the conceal color to match the molokai theme
 hi Conceal guifg=#F8F8F2 guibg=#1B1D1E
