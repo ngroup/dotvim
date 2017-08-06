@@ -25,7 +25,7 @@ source ~/.config/nvim/plugins.vim
     set hidden                                      " switch buffer without saving
 
     " system clipboard integration
-    set clipboard=unnamedplus
+    set clipboard+=unnamedplus
 
     autocmd BufEnter * silent! lcd %:p:h   " auto change the current directory
 
