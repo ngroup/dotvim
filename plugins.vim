@@ -184,6 +184,7 @@ Plug 'junegunn/fzf.vim'
     nnoremap <nowait><silent> <leader><CR>     :Buffers<CR>
 
 Plug 'Shougo/neomru.vim'
+Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar' "{{{
     nnoremap <F8> :TagbarToggle<CR>
     "}}}
@@ -218,6 +219,9 @@ Plug 'zchee/deoplete-jedi'
     autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
     autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+Plug 'davidhalter/jedi-vim'
+    let g:jedi#completions_enabled = 0
+
 function! s:is_whitespace()
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~? '\s'
@@ -226,5 +230,7 @@ endfunction
 
 Plug 'w0rp/ale'
     let g:ale_lint_on_text_changed = 'normal'
+
+Plug 'equalsraf/neovim-gui-shim'
 
 call plug#end()
